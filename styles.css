@@ -1,4 +1,27 @@
 /*######################
+HTML STYLE
+######################*/
+/*
+html { 
+    background: url(images/bg.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+*/
+/*######################
+BODY STYLE
+######################*/
+
+body{
+    background-image: url("/img/background.jpg");
+    background-color: #cccccc;
+    background-size: cover;
+    background-size: 150%;
+}
+
+/*######################
 INPUT RANGE STYLE
 ######################*/
 
@@ -6,7 +29,7 @@ input[type=range] {
     height: 28px;
     -webkit-appearance: none;
     margin: 10px 0;
-    width: 50%;
+    width: 40%;
     overflow: hidden;
     background-color: #fdfefd;
   }
@@ -19,14 +42,14 @@ input[type=range] {
     height: 30px;
     cursor: pointer;
     box-shadow: 0px 0px 0px #000000;
-    background: #fdfefd;
+    background: #9bf07c;
     border-radius: 0px;
     border: 0px solid #000000;
     color: #13bba4;
     margin-top: -1px;
   }
   input[type=range]::-webkit-slider-thumb {
-    box-shadow: -200px 0 0 200px #0ed325;
+    box-shadow: -400px 0 0 400px #0ed325;
     border: 0px solid #000000;
     height: 30px;
     width: 15px;
@@ -100,7 +123,7 @@ INPUT SUBMIT STYLE
 
 input[type=submit] {
     padding:10px 15px; 
-    background:#ccc; 
+    background:#9bf07c; 
     border:0 none;
     cursor:pointer;
     -webkit-border-radius: 5px;
@@ -114,4 +137,6 @@ INPUT SELECT STYLE
 
 select {
     font-size: 30px;
-  }
+    background:#9bf07c; 
+}
+
