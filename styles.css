@@ -27,7 +27,7 @@ INPUT RANGE STYLE
 
 input[type=range] {
     height: 28px;
-    -webkit-appearance: none;
+    appearance: none;
     margin: 10px 0;
     width: 40%;
     overflow: hidden;
