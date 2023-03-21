@@ -9,41 +9,41 @@ $imgmarktextsize='100px';
         <link rel="stylesheet" href="styles.css">
         <meta charset="utf-16">
         <title>
-            Р РµР·СѓР»СЊС‚Р°С‚
+            Результат
         </title>
     </head>
 
     <body>
 
-        <?php echo "<h2 class='headtext'>Р РµР·СѓР»СЊС‚Р°С‚Рё РѕРїРёС‚СѓРІР°РЅРЅСЏ [$arr[0]]</h2>"?>
+        <?php echo "<h2 class='headtext'>Результати опитування [$arr[0]]</h2>"?>
         <hr>
         <!-- 1 -->
         <img src = "img/img1.bmp">
-        <?php echo "<snap style='font-size: $imgmarktextsize'>&nbsp;$arr[1]</snap>" ?>
+        <?php echo "<snap style='font-size: $imgmarktextsize'>&nbsp;". round($arr[1]/$arr[0]) ."</snap>" ?>
 
         <hr>
 
         <!-- 2 -->
         <img src = "img/img2.bmp">
-        <?php echo "<snap style='font-size: $imgmarktextsize'>&nbsp;$arr[2]</snap>" ?>
+        <?php echo "<snap style='font-size: $imgmarktextsize'>&nbsp;". round($arr[2]/$arr[0]) ."</snap>" ?>
 
         <hr>
 
         <!-- 3 -->
         <img src = "img/img3.bmp">
-        <?php echo "<snap style='font-size: $imgmarktextsize'>&nbsp;$arr[3]</snap>" ?>
+        <?php echo "<snap style='font-size: $imgmarktextsize'>&nbsp;". round($arr[3]/$arr[0]) ."</snap>" ?>
 
         <hr>
 
         <!-- 4 -->
         <img src = "img/img4.bmp">
-        <?php echo "<snap style='font-size: $imgmarktextsize'>&nbsp;$arr[4]</snap>" ?>
+        <?php echo "<snap style='font-size: $imgmarktextsize'>&nbsp;". round($arr[4]/$arr[0]) ."</snap>" ?>
 
         <hr>
 
         <!-- 5 -->
         <img src = "img/img5.bmp">
-        <?php echo "<snap style='font-size: $imgmarktextsize'>&nbsp;$arr[5]</snap>" ?>
+        <?php echo "<snap style='font-size: $imgmarktextsize'>&nbsp;". round($arr[5]/$arr[0]) ."</snap>" ?>
         
         <hr>
 
