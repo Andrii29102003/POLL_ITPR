@@ -9,39 +9,39 @@ $imgmarktextsize='100px';
         <link rel="stylesheet" href="styles.css">
         <meta charset="utf-16">
         <title>
-            Результати
+            Р РµР·СѓР»СЊС‚Р°С‚
         </title>
     </head>
 
     <body>
 
-        <?php echo "<h2 class='headtext'>РЕЗУЛЬТАТИ ОПИТУВАННЯ [$arr[0]]</h2>"?>
+        <?php echo "<h2 class='headtext'>Р РµР·СѓР»СЊС‚Р°С‚Рё РѕРїРёС‚СѓРІР°РЅРЅСЏ [$arr[0]]</h2>"?>
         <hr>
-        <!-- Питання1 -->
+        <!-- 1 -->
         <img src = "img/img1.bmp">
         <?php echo "<snap style='font-size: $imgmarktextsize'>&nbsp;$arr[1]</snap>" ?>
 
         <hr>
 
-        <!-- Питання2 -->
+        <!-- 2 -->
         <img src = "img/img2.bmp">
         <?php echo "<snap style='font-size: $imgmarktextsize'>&nbsp;$arr[2]</snap>" ?>
 
         <hr>
 
-        <!-- Питання3 -->
+        <!-- 3 -->
         <img src = "img/img3.bmp">
         <?php echo "<snap style='font-size: $imgmarktextsize'>&nbsp;$arr[3]</snap>" ?>
 
         <hr>
 
-        <!-- Питання4 -->
+        <!-- 4 -->
         <img src = "img/img4.bmp">
         <?php echo "<snap style='font-size: $imgmarktextsize'>&nbsp;$arr[4]</snap>" ?>
 
         <hr>
 
-        <!-- Питання5 -->
+        <!-- 5 -->
         <img src = "img/img5.bmp">
         <?php echo "<snap style='font-size: $imgmarktextsize'>&nbsp;$arr[5]</snap>" ?>
         
