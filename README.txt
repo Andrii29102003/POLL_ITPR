@@ -19,4 +19,3 @@ arr.txt    : UTF-8
 
 КАРОЧ, ВСЕ В UTF-8
 
-SO
