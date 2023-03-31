@@ -5,6 +5,22 @@ from flask import render_template
 
 app = Flask(__name__)
 
+#TO DO
+@app.route('/', methods=['GET'])
+def index():
+    return render_template('index.html')
+
+#SOME TO DO
+@app.route('/ask', methods=['GET'])
+def index():
+    return render_template('index.html')
+
+#TO DO
+@app.route('/results', methods=['GET'])
+def index():
+    return render_template('index.html')
+
+#TO DO
 @app.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
