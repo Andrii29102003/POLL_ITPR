@@ -9,6 +9,7 @@ resultsOfAsk = [1,500,500,500,500,500] #list of results of ask
 
 #TO DO
 @app.route('/', methods=['GET'])
+@app.route('/index', methods=['GET'])
 def index():
     return render_template('index.html')
 
@@ -20,7 +21,10 @@ def ask():
 #TO DO
 @app.route('/results', methods=['GET'])
 def results():
-    return render_template('results.html', resultsOfAsk=resultsOfAsk)
+    if request.method == 'GET':
+        return render_template('results.html', resultsOfAsk=resultsOfAsk)
+    else:
+        return render_template('ask.html')
 
 #TO DO
 @app.route('/create', methods=['GET'])

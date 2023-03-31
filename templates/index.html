@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <!--<link rel="stylesheet" href="styles.css">-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+        <meta charset="utf-8">
+        <title>
+            Головна
+        </title>
+    </head>
+
+    <body>
+        <div class="index-select">
+            <h2>POLL-ITPR</h2>
+            <form action="{{ url_for('ask')}}" metod="GET">
+                <input type="text" name="name" placeholder="Введіть ім'я" style="font-size: 30px;"><br>
+                <input type="text" name="code" placeholder="Введіть код опитування" style="font-size: 30px;"><br>
+                <input type="submit" value="    Почати опитування    ">
+            </form>
+            <a style="font-size: 30px;" href="{{ url_for('results')}}">Результати опитування</a><br>
+            <a style="font-size: 30px;" href="{{ url_for('create')}}">Створити опитування</a><br>
+        </div>
+    </body>
+</html>
