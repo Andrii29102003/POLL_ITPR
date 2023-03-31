@@ -15,7 +15,7 @@ def index():
 #SOME TO DO
 @app.route('/ask', methods=['GET'])
 def ask():
-    return render_template('index.html')
+    return render_template('ask.html')
 
 #TO DO
 @app.route('/results', methods=['GET'])
@@ -25,7 +25,7 @@ def results():
 #TO DO
 @app.route('/create', methods=['GET'])
 def create():
-    return render_template('index.html')
+    return render_template('create.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
