@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <!--<link rel="stylesheet" href="styles.css">-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+        <meta charset="utf-8">
+        <title>
+            Результати
+        </title>
+    </head>
+
+    <body>
+
+        <h2 class='headtext'>РЕЗУЛЬТАТИ ОПИТУВАННЯ [{{resultsOfAsk[0]}}]</h2>
+        <hr> 
+        
+        <!-- Питання1 -->
+        <img src = "{{url_for('static', filename='img/img1.bmp')}}">
+        <snap class="imgmarktext">&nbsp;{{resultsOfAsk[1]}}</snap>
+        <hr>
+
+        <!-- Питання2 -->
+        <img src = "{{url_for('static', filename='img/img2.bmp')}}">
+        <snap class="imgmarktext">&nbsp;{{resultsOfAsk[2]}}</snap>
+        <hr>
+
+        <!-- Питання3 -->
+        <img src = "{{url_for('static', filename='img/img3.bmp')}}">
+        <snap class="imgmarktext">&nbsp;{{resultsOfAsk[3]}}</snap>
+        <hr>
+
+        <!-- Питання4 -->
+        <img src = "{{url_for('static', filename='img/img4.bmp')}}">
+        <snap class="imgmarktext">&nbsp;{{resultsOfAsk[4]}}</snap>
+        <hr>
+
+        <!-- Питання5 -->
+        <img src = "{{url_for('static', filename='img/img5.bmp')}}">
+        <snap class="imgmarktext">&nbsp;{{resultsOfAsk[5]}}</snap>
+        <hr>
+
+    </body>
+
+</html>

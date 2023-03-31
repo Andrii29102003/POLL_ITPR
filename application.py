@@ -5,6 +5,8 @@ from flask import render_template
 
 app = Flask(__name__)
 
+resultsOfAsk = [1,500,500,500,500,500] #list of results of ask
+
 #TO DO
 @app.route('/', methods=['GET'])
 def index():
@@ -12,17 +14,17 @@ def index():
 
 #SOME TO DO
 @app.route('/ask', methods=['GET'])
-def index():
+def ask():
     return render_template('index.html')
 
 #TO DO
 @app.route('/results', methods=['GET'])
-def index():
-    return render_template('index.html')
+def results():
+    return render_template('results.html', resultsOfAsk=resultsOfAsk)
 
 #TO DO
-@app.route('/', methods=['GET'])
-def index():
+@app.route('/create', methods=['GET'])
+def create():
     return render_template('index.html')
 
 if __name__ == '__main__':
