@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <!--<link rel="stylesheet" href="styles.css">-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+        <meta charset="utf-8">
+        <title>
+            Створити
+        </title>
+    </head>
+    <body>
+        <h1>СТВОРИТИ ОПИТУВАННЯ</h1>
+        <h1>ID: {{}}</h1>
+        <h1>КОД ДЛЯ ВИДАЛЕННЯ: {{}}</h1>
+        <form method="GET">
+            <input type="text" id="link1"> <hr>
+            <input type="text" id="link2"> <hr>
+            <input type="text" id="link3"> <hr>
+            <input type="text" id="link4"> <hr>
+            <input type="text" id="link5"> <hr>
+            <input type="submit" value="Створити опитування">
+        </form>
+    
+
+    </body>
+
+</html>

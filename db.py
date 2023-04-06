@@ -23,9 +23,9 @@ class DB():
         return self.cur.fetchone()[0]
 
     def add(self, passw, links, marks, tmp):     #додавання нового опитування з даними
-        self.cur.execute("INSERT INTO ask(passw, links, marks, tmp) VALUES(?, ?, ?, ?)", (json.dumps(passw), json.dumps(links), json.dumps(marks), json.dumps(tmp)))
+        self.cur.execute("INSERT INTO ask(passw, links, marks, tmp) VALUES(?, ?, ?, ?)", (passw, json.dumps(links), json.dumps(marks), json.dumps(tmp)))
         self.con.commit()
-        self.cur.execute("SELECT id FROM ask WHERE passw=? AND links=? AND marks=? AND tmp=?", (json.dumps(passw), json.dumps(links), json.dumps(marks), json.dumps(tmp)))
+        self.cur.execute("SELECT id FROM ask WHERE passw=? AND links=? AND marks=? AND tmp=?", (passw, json.dumps(links), json.dumps(marks), json.dumps(tmp)))
         self.con.commit()
         return self.cur.fetchone()[0]
     
