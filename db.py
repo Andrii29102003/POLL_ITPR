@@ -9,14 +9,16 @@ class db():
         self.con.commit()
     
     def new(self):      #створення зпису нового пустого опитування
-        self.cur.execute("INSERT INTO ask(pass, links, marks) VALUES(0, 0, 0)")
+        self.cur.execute('INSERT INTO ask(pass, links, marks) VALUES("", "", "")')
         self.con.commit()
-        return True
+        self.cur.execute('SELECT id FROM ask WHERE pass="" AND links="" AND marks=""')
+        return self.cur.fetchone()[0]
 
     def add(self, passw, links, marks):     #додавання нового опитування з даними
         self.cur.execute("INSERT INTO ask(pass, links, marks) VALUES(?, ?, ?)", (passw, links, marks))
         self.con.commit()
-        return True
+        self.cur.execute("SELECT id FROM ask WHERE pass=? AND links=? AND marks=?", (passw, links, marks))
+        return self.cur.fetchone()[0]
     
     def get(self, id):      #отримання опитування по id
         self.cur.execute("SELECT * FROM ask WHERE id=?", (id,))
