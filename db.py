@@ -15,21 +15,21 @@ class DB():
         self.cur.execute("CREATE TABLE IF NOT EXISTS ask(id INTEGER PRIMARY KEY, passw CHAR(9), links CHAR(12000), marks(100), tmp TEXT)")
         self.con.commit()
     
-    def new(self):      #створення зпису нового пустого опитування
+    def create_poll(self):      #створення зпису нового пустого опитування
         self.cur.execute('INSERT INTO ask(passw, links, marks, tmp) VALUES("", "", "", "")')
         self.con.commit()
         self.cur.execute('SELECT id FROM ask WHERE passw="" AND links="" AND marks="" AND tmp=""')
         self.con.commit()
         return self.cur.fetchone()[0]
 
-    def add(self, passw, links, marks, tmp):     #додавання нового опитування з даними
-        self.cur.execute("INSERT INTO ask(passw, links, marks, tmp) VALUES(?, ?, ?, ?)", (passw, json.dumps(links), json.dumps(marks), json.dumps(tmp)))
+    def add_new_poll(self, passw, links, marks, tmp):     #додавання нового опитування з даними
+        self.cur.execute("INSERT INTO ask(passw, links, marks, tmp) VALUES(?, ?, ?, ?)", (json.dumps(passw), json.dumps(links), json.dumps(marks), json.dumps(tmp)))
         self.con.commit()
-        self.cur.execute("SELECT id FROM ask WHERE passw=? AND links=? AND marks=? AND tmp=?", (passw, json.dumps(links), json.dumps(marks), json.dumps(tmp)))
+        self.cur.execute("SELECT id FROM ask WHERE passw=? AND links=? AND marks=? AND tmp=?", (json.dumps(passw), json.dumps(links), json.dumps(marks), json.dumps(tmp)))
         self.con.commit()
         return self.cur.fetchone()[0]
     
-    def get(self, id):      #отримання опитування по id
+    def get_poll_by_id(self, id):      #отримання опитування по id
         self.cur.execute("SELECT * FROM ask WHERE id=?", (id))
         self.con.commit()
         data={}
@@ -40,7 +40,7 @@ class DB():
         data["tmp"] = json.loads(self.cur.fetchone()[4])
         return data    #повертає дані в словнику data з ключами id, passw, links, marks, tmp
     
-    def get_all(self):      #отримання даних всіх опитувань
+    def get_all_pools(self):      #отримання даних всіх опитувань
         self.cur.execute("SELECT * FROM ask")
         self.con.commit()
         return self.cur.fetchall()
@@ -50,7 +50,7 @@ class DB():
         self.con.commit()
         return True
     
-    def update(self, id, links, marks, tmp):      #оновлення даних опитування по id
+    def update_poll_data(self, id, links, marks, tmp):      #оновлення даних опитування по id
         self.cur.execute("UPDATE ask SET links=?, marks=?, tmp=? WHERE id=?", (json.dumps(links), json.dumps(marks), json.dumps(tmp), id))
         self.con.commit()
         return True
