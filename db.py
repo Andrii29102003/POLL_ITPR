@@ -21,6 +21,9 @@ class DB():
         return self.cur.fetchone()[0]
 
     def add(self, passw, links, marks, tmp):     #додавання нового опитування з даними
+        links = json.dumps(links)
+        marks = json.dumps(marks)
+        tmp = json.dumps(tmp)
         self.cur.execute("INSERT INTO ask(pass, links, marks, tmp) VALUES(?, ?, ?, ?)", (passw, links, marks, tmp))
         self.con.commit()
         self.cur.execute("SELECT id FROM ask WHERE pass=? AND links=? AND marks=? AND tmp=?", (passw, links, marks, tmp))
@@ -40,6 +43,9 @@ class DB():
         return True
     
     def update(self, id, passw, links, marks, tmp):      #оновлення даних опитування по id
+        links = json.dumps(links)
+        marks = json.dumps(marks)
+        tmp = json.dumps(tmp)
         self.cur.execute("UPDATE ask SET pass=?, links=?, marks=?, tmp=? WHERE id=?", (passw, links, marks, tmp, id))
         self.con.commit()
         return True
