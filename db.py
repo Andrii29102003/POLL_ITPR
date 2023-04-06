@@ -12,11 +12,11 @@ class DB():
     def __init__(self, file_name):     #підключення до бази даних створення таблиці в ній таблиці
         self.con = sqlite3.connect(file_name)
         self.cur = self.con.cursor()
-        self.cur.execute("CREATE TABLE IF NOT EXISTS ask(id INTEGER PRIMARY KEY, passw CHAR(9), links CHAR(12000), marks(100), tmp TEXT)")
+        self.cur.execute("CREATE TABLE IF NOT EXISTS ask(id INTEGER PRIMARY KEY, passw CHAR(9), links CHAR(12000), marks CHAR(100), tmp TEXT)")
         self.con.commit()
     
-    def new(self):      #створення зпису нового пустого опитування
-        self.cur.execute('INSERT INTO ask(passw, links, marks, tmp) VALUES("", "", "", "")')
+    def new(self,passw):      #створення зпису нового пустого опитування
+        self.cur.execute('INSERT INTO ask(passw, links, marks, tmp) VALUES("", "", "", ?)', (passw))
         self.con.commit()
         self.cur.execute('SELECT id FROM ask WHERE passw="" AND links="" AND marks="" AND tmp=""')
         self.con.commit()
