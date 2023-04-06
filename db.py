@@ -1,5 +1,10 @@
 import sqlite3
 
+#id = int
+#links = json data
+#marks = json data
+#tmp = json data
+
 
 class db():
     def __init__(self):     #підключення до бази даних створення таблиці в ній таблиці
