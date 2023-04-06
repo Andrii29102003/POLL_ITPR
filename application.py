@@ -1,7 +1,7 @@
 from flask import Flask
 from flask import request
 from flask import render_template
-import sqlite3
+
 
 
 app = Flask(__name__)
@@ -18,7 +18,7 @@ def index():
 @app.route('/ask', methods=['GET'])
 def ask():
     """TESTING"""    
-    urls = ['https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.aboutamazon.com%2Fnews%2Fdevices%2Falexa-can-help-everyone-even-cats&psig=AOvVaw2P_7qecebHzHa_fing3BrT&ust=1680849860375000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCLCUxenTlP4CFQAAAAAdAAAAABAE', "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.denver7.com%2Fnews%2Fnational%2Fnew-study-finds-humans-can-communicate-with-cats-by-blinking-slowly&psig=AOvVaw2P_7qecebHzHa_fing3BrT&ust=1680849860375000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCLCUxenTlP4CFQAAAAAdAAAAABAJ", "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.denver7.com%2Fnews%2Fnational%2Fnew-study-finds-humans-can-communicate-with-cats-by-blinking-slowly&psig=AOvVaw2P_7qecebHzHa_fing3BrT&ust=1680849860375000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCLCUxenTlP4CFQAAAAAdAAAAABAJ"]
+    urls = ['https://assets.aboutamazon.com/dims4/default/42868bd/2147483647/strip/true/crop/1279x720+0+0/resize/1320x743!/format/webp/quality/90/?url=https%3A%2F%2Famazon-blogs-brightspot.s3.amazonaws.com%2F06%2Ff1%2F8767bdab489e8e2780a3f870e8c5%2Falexa-for-pets-1.jpg', "https://assets.aboutamazon.com/dims4/default/42868bd/2147483647/strip/true/crop/1279x720+0+0/resize/1320x743!/format/webp/quality/90/?url=https%3A%2F%2Famazon-blogs-brightspot.s3.amazonaws.com%2F06%2Ff1%2F8767bdab489e8e2780a3f870e8c5%2Falexa-for-pets-1.jpg", "https://npr.brightspotcdn.com/dims4/default/4c6a59a/2147483647/strip/true/crop/4032x2268+0+378/resize/1200x675!/quality/90/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2Flegacy%2Fsites%2Fwxxi%2Ffiles%2F202004%2Fsassy_sick.jpg"]
     return render_template('ask_dinamic.html', urls=urls)
 
 # def ask():
