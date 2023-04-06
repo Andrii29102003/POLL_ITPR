@@ -29,7 +29,7 @@ def index():
 @app.route('/ask', methods=['GET'])
 def ask():
     """TESTING"""    
-    urls =
+    urls = ['https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.aboutamazon.com%2Fnews%2Fdevices%2Falexa-can-help-everyone-even-cats&psig=AOvVaw2P_7qecebHzHa_fing3BrT&ust=1680849860375000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCLCUxenTlP4CFQAAAAAdAAAAABAE', "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.denver7.com%2Fnews%2Fnational%2Fnew-study-finds-humans-can-communicate-with-cats-by-blinking-slowly&psig=AOvVaw2P_7qecebHzHa_fing3BrT&ust=1680849860375000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCLCUxenTlP4CFQAAAAAdAAAAABAJ", "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.denver7.com%2Fnews%2Fnational%2Fnew-study-finds-humans-can-communicate-with-cats-by-blinking-slowly&psig=AOvVaw2P_7qecebHzHa_fing3BrT&ust=1680849860375000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCLCUxenTlP4CFQAAAAAdAAAAABAJ"]
     return render_template('ask_dinamic.html', urls=urls)
 
 # def ask():
