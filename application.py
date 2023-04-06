@@ -9,7 +9,7 @@ import sqlite3
 ################################
 con = sqlite3.connect("data.db")
 cur = con.cursor()
-cur.execute("CREATE TABLE movie(id INTEGER PRIMARY KEY, pass CHAR(9), links CHAR(12000), marks(100) else TEXT)")
+cur.execute("CREATE TABLE ask(id INTEGER PRIMARY KEY, pass CHAR(9), links CHAR(12000), marks(100) else TEXT)")
 
 ################################
 # END DATABASE
