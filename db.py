@@ -6,7 +6,7 @@ import sqlite3
 #tmp = json data
 
 
-class db():
+class DB():
     def __init__(self):     #підключення до бази даних створення таблиці в ній таблиці
         self.con = sqlite3.connect("data.db")
         self.cur = self.con.cursor()
