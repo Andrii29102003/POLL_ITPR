@@ -7,8 +7,8 @@ import sqlite3
 
 
 class DB():
-    def __init__(self):     #підключення до бази даних створення таблиці в ній таблиці
-        self.con = sqlite3.connect("data.db")
+    def __init__(self, file_name):     #підключення до бази даних створення таблиці в ній таблиці
+        self.con = sqlite3.connect(file_name)
         self.cur = self.con.cursor()
         self.cur.execute("CREATE TABLE IF NOT EXISTS ask(id INTEGER PRIMARY KEY, pass CHAR(9), links CHAR(12000), marks(100), tmp TEXT)")
         self.con.commit()
