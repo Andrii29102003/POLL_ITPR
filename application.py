@@ -2,6 +2,7 @@ from flask import Flask
 from flask import request
 from flask import render_template
 import sqlite3
+import json
 
 
 ################################
@@ -10,6 +11,7 @@ import sqlite3
 con = sqlite3.connect("data.db")
 cur = con.cursor()
 cur.execute("CREATE TABLE ask(id INTEGER PRIMARY KEY, pass CHAR(9), links CHAR(12000), marks(100) else TEXT)")
+con.commit()
 
 ################################
 # END DATABASE
