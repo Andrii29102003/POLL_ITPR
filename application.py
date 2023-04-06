@@ -28,7 +28,12 @@ def index():
 #SOME TO DO
 @app.route('/ask', methods=['GET'])
 def ask():
-    return render_template('ask.html')
+    """TESTING"""    
+    urls =
+    return render_template('ask_dinamic.html', urls=urls)
+
+# def ask():
+#     return render_template('ask.html')
 
 #TO DO
 @app.route('/results', methods=['GET'])
