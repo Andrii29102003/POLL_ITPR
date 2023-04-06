@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="uk">
     <head>
-        <!--<link rel="stylesheet" href="styles.css">-->
+        {% comment %} <link rel="stylesheet" href="static/css/styles.css"> {% endcomment %}
         <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
         <meta charset="utf-8">
         <title>
             Опитування
         </title>
+        <style>
+            img {
+              max-width: 400px;
+              height: auto;
+            }
+          </style>
     </head>
 
     <body>
@@ -16,15 +22,11 @@
         <form action="results"> 
             {% for url in urls %}
             <div>
-              <a href="{{ url }}">{{ url }}</a>
+                <img src="{{ url }}" alt="Image">
               <input type="range" id="volume{{ loop.index + 1}}" name="volume{{ loop.index + 1}}" min="1" max="5">
               <button id="recordButton{{ loop.index + 1}}" type="button">Скажіть</button>
             </div>
             {% endfor %}
-        <!-- Питання1 -->
-        {% comment %} <img src = "{{url_for('static', filename='img/img1.bmp')}}">
-        <input type="range" id="volume1" name="volume1" min="1" max="5">
-        <button id="recordButton1" type="button">Скажіть</button> {% endcomment %}
         <hr>
 
         <hr>
