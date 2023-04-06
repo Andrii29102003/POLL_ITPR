@@ -5,7 +5,7 @@ class db():
     def __init__(self):     #підключення до бази даних створення таблиці в ній таблиці
         self.con = sqlite3.connect("data.db")
         self.cur = self.con.cursor()
-        self.cur.execute("CREATE TABLE ask(id INTEGER PRIMARY KEY, pass CHAR(9), links CHAR(12000), marks(100) else TEXT)")
+        self.cur.execute("CREATE TABLE IF NOT EXISTS ask(id INTEGER PRIMARY KEY, pass CHAR(9), links CHAR(12000), marks(100) else TEXT)")
         self.con.commit()
     
     def new(self):      #створення зпису нового пустого опитування
