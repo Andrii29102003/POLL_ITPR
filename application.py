@@ -1,16 +1,15 @@
 from flask import Flask
 from flask import request
 from flask import render_template
-from db import DB
+import random 
+from loader import dblite
 
 
-file = "data.db"
-dblite = DB(file_name=file)
 
 app = Flask(__name__)
 
 resultsOfAsk = [1,500,500,500,500,500] #list of results of ask
-
+          
 #TO DO
 @app.route('/', methods=['GET'])
 @app.route('/index', methods=['GET'])
@@ -38,10 +37,23 @@ def results():
 #TO DO
 @app.route('/create', methods=['GET'])
 def create():
-    passw="abcd"
+    passw="I love to **********************"
     #id=dblite.new(passw=passw)
-    id=1
+    id=random.randint(10000,1000000000)
     return render_template('create.html', id=id, passw=passw)
+
+@app.route('/submit_form/<int:id>/<string:passw>', methods=['GET'])
+def submit_form(id, passw):
+    print('resv ', id, passw)
+    link1 = request.args.get('link1')
+    link2 = request.args.get('link2')
+    link3 = request.args.get('link3')
+    link4 = request.args.get('link4')
+    link5 = request.args.get('link5')
+
+    dblite.create_poll()
+
+    return 'Form submitted successfully!'
 
 if __name__ == '__main__':
     app.run(debug=True)

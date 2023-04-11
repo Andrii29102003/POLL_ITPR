@@ -12,7 +12,7 @@
         <h1>СТВОРИТИ ОПИТУВАННЯ</h1>
         <h1>ID: {{id}}</h1>
         <h1>КОД ДЛЯ ВИДАЛЕННЯ: {{passw}}</h1>
-        <form method="GET">
+        <form method="GET" action="{{ url_for('submit_form', id=id, passw=passw) }}">
             <input type="text" id="link1"> <hr>
             <input type="text" id="link2"> <hr>
             <input type="text" id="link3"> <hr>

@@ -12,15 +12,15 @@ class DB():
     def __init__(self, file_name):     #підключення до бази даних створення таблиці в ній таблиці
         self.con = sqlite3.connect(file_name)
         self.cur = self.con.cursor()
-        self.cur.execute("CREATE TABLE IF NOT EXISTS ask(id INTEGER PRIMARY KEY, passw CHAR(9), links CHAR(12000), marks(100), tmp TEXT)")
+        self.cur.execute("CREATE TABLE IF NOT EXISTS ask(id INTEGER PRIMARY KEY, passw CHAR(9), links CHAR(12000), marks CHAR(100), tmp TEXT)")
         self.con.commit()
     
-    def create_poll(self):      #створення зпису нового пустого опитування
-        self.cur.execute('INSERT INTO ask(passw, links, marks, tmp) VALUES("", "", "", "")')
-        self.con.commit()
-        self.cur.execute('SELECT id FROM ask WHERE passw="" AND links="" AND marks="" AND tmp=""')
-        self.con.commit()
-        return self.cur.fetchone()[0]
+    # def create_poll(self):      #створення зпису нового пустого опитування
+    #     self.cur.execute('INSERT INTO ask(passw, links, marks, tmp) VALUES("", "", "", "")')
+    #     self.con.commit()
+    #     self.cur.execute('SELECT id FROM ask WHERE passw="" AND links="" AND marks="" AND tmp=""')
+    #     self.con.commit()
+    #     return self.cur.fetchone()[0]
 
     def add_new_poll(self, passw, links, marks, tmp):     #додавання нового опитування з даними
         self.cur.execute("INSERT INTO ask(passw, links, marks, tmp) VALUES(?, ?, ?, ?)", (json.dumps(passw), json.dumps(links), json.dumps(marks), json.dumps(tmp)))
