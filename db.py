@@ -50,8 +50,19 @@ class DB():
         self.con.commit()
         return True
     
+    
     def update_poll_data(self, id, links, marks, tmp):      #оновлення даних опитування по id
         self.cur.execute("UPDATE ask SET links=?, marks=?, tmp=? WHERE id=?", (json.dumps(links), json.dumps(marks), json.dumps(tmp), id))
         self.con.commit()
         return True
     
+    def update_poll_marsk_by_id(self, id_to_update, marks):      #оновлення даних опитування по id
+        self.cur.execute("UPDATE ask SET marks=? WHERE id=?", (json.dumps(marks), id_to_update))
+        self.con.commit()
+        return True
+    
+    def update_poll_links_by_id(self, id_to_update, links):      #оновлення даних опитування по id
+        self.cur.execute("UPDATE ask SET links=? WHERE id=?", (json.dumps(links), id_to_update))
+        self.con.commit()
+        return True
+        
