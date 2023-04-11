@@ -39,7 +39,8 @@ def results():
 def create():
     passw="I love to **********************"
     #id=dblite.new(passw=passw)
-    id=random.randint(10000,1000000000)
+    id=len(dblite.get_all_pools()) + 1
+    
     return render_template('create.html', id=id, passw=passw)
 
 @app.route('/submit_form/<int:id>/<string:passw>', methods=['GET'])
@@ -51,7 +52,7 @@ def submit_form(id, passw):
     link4 = request.args.get('link4')
     link5 = request.args.get('link5')
 
-    dblite.create_poll()
+    dblite.add_new_poll(passw,[link1,link2,link3,link4,link5], )
 
     return 'Form submitted successfully!'
 
