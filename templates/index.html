@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 <html lang="uk">
     <head>
-        <!--<link rel="stylesheet" href="styles.css">-->
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+        <link href="{{ url_for('static', filename='css/styles_create.css') }}" type='text/css' rel="stylesheet">
         <meta charset="utf-8">
-        <title>
-            Головна
-        </title>
+        <title>Головна</title>
     </head>
 
     <body>
-        <div class="index-select">
-            <h2>POLL-ITPR</h2>
-            <form action="{{ url_for('ask')}}" metod="GET">
-                <input type="text" name="name" placeholder="Введіть ім'я" style="font-size: 30px;"><br>
-                <input type="text" name="code" placeholder="Введіть код опитування" style="font-size: 30px;"><br>
-                <input type="submit" value="    Почати опитування    ">
+        <div class="login">
+            <h1 class="nonactive texto_center">Опитування</h1>
+            <hr>
+            <h2 class="active">Пройти</h2>
+            <h2 class="nonactive">Створити</h2>
+
+            <form method="POST">
+                <input type="text" class="text" name="username">
+                <span>Ім'я користувача</span>
+                <br><br>
+
+                <input type="text" class="text" name="ask_id">
+                <span>Проходження опитування</span>
+                <br><br>
+
+                <input type="checkbox" id="checkbox-1-1" class="custom-checkbox" name="is_create"/>
+                <label for="checkbox-1-1">Is Login to Ask</label>
+                <button class="signin" type="submit">Пройти опитування</button>
+                <hr>
+
             </form>
-            <a style="font-size: 30px;" href="{{ url_for('results')}}">Результати опитування</a><br>
-            <a style="font-size: 30px;" href="{{ url_for('create')}}">Створити опитування</a><br>
         </div>
     </body>
 </html>

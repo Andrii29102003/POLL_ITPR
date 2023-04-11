@@ -8,15 +8,24 @@ from loader import dblite
 
 app = Flask(__name__)
 
-resultsOfAsk = [1,500,500,500,500,500] #list of results of ask
+resultsOfAsk = [1, 500, 500, 500, 500, 500] # list of results of ask
           
-#TO DO
-@app.route('/', methods=['GET'])
-@app.route('/index', methods=['GET'])
-def index():
-    return render_template('index.html')
 
-#SOME TO DO
+# //--TO DO
+# //-- VlaGan: перші тестові накидки (поки онлі коннект до аска)
+@app.route('/', methods=["GET", "POST"])
+@app.route('/index', methods=["GET", "POST"])
+def index():
+    if request.method == "POST":
+        request_values = [request.values["username"], request.values["ask_id"]]
+        print("REQUEST VALUES =", request_values)
+        #return render_template("create.html", args=request_values)
+
+    print("--rendering index/default page")
+    return render_template("index.html")
+
+
+# SOME TO DO
 @app.route('/ask', methods=['GET'])
 def ask():
     """TESTING"""    
@@ -26,7 +35,8 @@ def ask():
 # def ask():
 #     return render_template('ask.html')
 
-#TO DO
+
+# TO DO
 @app.route('/results', methods=['GET'])
 def results():
     if request.method == 'GET':
@@ -34,7 +44,8 @@ def results():
     else:
         return render_template('ask.html')
 
-#TO DO
+
+# TO DO
 @app.route('/create', methods=['GET'])
 def create():
     passw="I love to **********************"
@@ -42,6 +53,7 @@ def create():
     id=len(dblite.get_all_pools()) + 1
     
     return render_template('create.html', id=id, passw=passw)
+
 
 @app.route('/submit_form/<int:id>/<string:passw>', methods=['GET'])
 def submit_form(id, passw):
@@ -55,6 +67,7 @@ def submit_form(id, passw):
     dblite.add_new_poll(passw,[link1,link2,link3,link4,link5], )
 
     return 'Form submitted successfully!'
+
 
 if __name__ == '__main__':
     app.run(debug=True)
