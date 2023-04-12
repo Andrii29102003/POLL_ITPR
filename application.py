@@ -48,7 +48,7 @@ def results():
 # TO DO
 @app.route('/create', methods=['GET'])
 def create():
-    passw="I love to **********************"
+    passw=str(random.randint(1111, 9999))
     #id=dblite.new(passw=passw)
     id=len(dblite.get_all_pools()) + 1
     
