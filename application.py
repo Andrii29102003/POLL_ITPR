@@ -50,7 +50,7 @@ def results():
 def create():
     passw=str(random.randint(1111, 9999))
     #id=dblite.new(passw=passw)
-    id=len(dblite.get_all_pools()) + 1
+    id=random.randint(1000,10000)
     
     return render_template('create.html', id=id, passw=passw)
 
