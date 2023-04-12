@@ -46,12 +46,12 @@ def results():
 
 
 # TO DO
-@app.route('/create', methods=['GET'])
+@app.route('/create', methods=['POST', 'GET'])
 def create():
     passw=str(random.randint(1111, 9999))
     #id=dblite.new(passw=passw)
     id=len(dblite.get_all_pools()) + 1
-    if request.method == "GET":
+    if request.method == "POST":
         link1 = request.values["link1"]
         link2 = request.values["link2"]
         link3 = request.values["link3"]
