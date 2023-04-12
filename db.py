@@ -23,10 +23,10 @@ class DB():
     #     return self.cur.fetchone()[0]
 
     def add_new_poll(self, passw, links, marks, tmp):     #додавання нового опитування з даними
-        self.cur.execute("INSERT INTO ask(passw, links, marks, tmp) VALUES(?, ?, ?, ?)", (json.dumps(passw), json.dumps(links), json.dumps(marks), json.dumps(tmp)))
+        self.cur.execute("INSERT INTO ask(id, passw, links, marks, tmp) VALUES(?, ?, ?, ?, ?)", (json.dumps(passw), json.dumps(passw), json.dumps(links), json.dumps(marks), json.dumps(tmp)))
         self.con.commit()
-        self.cur.execute("SELECT id FROM ask WHERE passw=? AND links=? AND marks=? AND tmp=?", (json.dumps(passw), json.dumps(links), json.dumps(marks), json.dumps(tmp)))
-        self.con.commit()
+        #self.cur.execute("SELECT id FROM ask WHERE passw=? AND links=? AND marks=? AND tmp=?", (json.dumps(passw), json.dumps(links), json.dumps(marks), json.dumps(tmp)))
+        #self.con.commit()
         return self.cur.fetchone()[0]
     
     def get_poll_by_id(self, id):      #отримання опитування по id
