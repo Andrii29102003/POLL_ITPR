@@ -51,14 +51,6 @@ def create():
     passw=str(random.randint(1111, 9999))
     #id=dblite.new(passw=passw)
     id=len(dblite.get_all_pools()) + 1
-    if request.method == "GET":
-        link1 = request.values["link1"]
-        link2 = request.values["link2"]
-        link3 = request.values["link3"]
-        link4 = request.values["link4"]
-        link5 = request.values["link5"] 
-        dblite.add_new_poll(id, passw, [link1,link2,link3,link4,link5], [0,0,0,0,0], "")
-        return render_template("index.html")
     
     return render_template('create.html', id=id, passw=passw)
 
