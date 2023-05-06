@@ -6,7 +6,6 @@ from dblite import DB
 from dblite import new_poll_query, create_db_tables, get_link_by_passw
 from side_func import * 
 import json
-
 app = Flask(__name__)
 file = "data.db"
 
@@ -77,14 +76,12 @@ def create():
     # result = db.execute_query("SELECT * FROM poll_data")
     id=len(db.execute_query("SELECT * FROM poll_data")) + 1
     if request.method == "POST":
-        link1 = request.form.get("link1")
-        link2 = request.form.get("link2")
-        link3 = request.form.get("link3")
-        link4 = request.form.get("link4")
-        link5 = request.form.get("link5")
-        result = db.execute_query(new_poll_query,(passw, del_passw,json.dumps([link1,link2,link3,link4,link5])))
-        print('result ', result)
-        
+        link1 = request.values["link1"]
+        link2 = request.values["link2"]
+        link3 = request.values["link3"]
+        link4 = request.values["link4"]
+        link5 = request.values["link5"] 
+        dblite.add_new_poll(id, passw, [link1,link2,link3,link4,link5], [0,0,0,0,0], "")
         return render_template("index.html")
     
     return render_template('create.html', id=id, passw=passw, del_passw=del_passw)
