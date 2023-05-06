@@ -1,21 +1,40 @@
-from flask import Flask
+from flask import Flask, g
 from flask import request
 from flask import render_template
 import random 
-from loader import dblite
-
+from dblite import DB
+from dblite import new_poll_query, create_db_tables
+from side_func import * 
 
 
 app = Flask(__name__)
+file = "data.db"
 
-resultsOfAsk = [1, 500, 500, 500, 500, 500] # list of results of ask
-          
+
+def get_db():
+    db = getattr(g, '_database', None)
+    if db is None:
+        db = g._database = DB(file_name=file)
+        db.connect()
+    return db
+
+
+
+
+@app.teardown_appcontext
+def close_db(exception):
+    db = getattr(g, '_database', None)
+    if db is not None:
+        db.close()
 
 # //--TO DO
 # //-- VlaGan: перші тестові накидки (поки онлі коннект до аска)
 @app.route('/', methods=["GET", "POST"])
 @app.route('/index', methods=["GET", "POST"])
 def index():
+    db = get_db()
+    _ = [db.execute_query(query) for query in create_db_tables]
+    
     if request.method == "POST":
         request_values = [request.values["username"], request.values["ask_id"]]
         print("REQUEST VALUES =", request_values)
@@ -29,6 +48,9 @@ def index():
 @app.route('/ask', methods=['GET'])
 def ask():
     """TESTING"""    
+    db = get_db()
+    result = db.execute_query("SELECT * FROM ask")
+    print('result: ', result)
     #urls = ['https://assets.aboutamazon.com/dims4/default/42868bd/2147483647/strip/true/crop/1279x720+0+0/resize/1320x743!/format/webp/quality/90/?url=https%3A%2F%2Famazon-blogs-brightspot.s3.amazonaws.com%2F06%2Ff1%2F8767bdab489e8e2780a3f870e8c5%2Falexa-for-pets-1.jpg', "https://assets.aboutamazon.com/dims4/default/42868bd/2147483647/strip/true/crop/1279x720+0+0/resize/1320x743!/format/webp/quality/90/?url=https%3A%2F%2Famazon-blogs-brightspot.s3.amazonaws.com%2F06%2Ff1%2F8767bdab489e8e2780a3f870e8c5%2Falexa-for-pets-1.jpg", "https://npr.brightspotcdn.com/dims4/default/4c6a59a/2147483647/strip/true/crop/4032x2268+0+378/resize/1200x675!/quality/90/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2Flegacy%2Fsites%2Fwxxi%2Ffiles%2F202004%2Fsassy_sick.jpg"]
     return render_template('ask.html')
 
@@ -48,16 +70,22 @@ def results():
 # TO DO
 @app.route('/create', methods=['POST', 'GET'])
 def create():
-    passw=str(random.randint(1111, 9999))
+    passw = generate_password(10)
+    del_passw=str(random.randint(11111, 999999))
     #id=dblite.new(passw=passw)
-    id=len(dblite.get_all_pools()) + 1
+    db = get_db()
+    # result = db.execute_query("SELECT * FROM poll_data")
+    id=len(db.execute_query("SELECT * FROM poll_data")) + 1
     if request.method == "POST":
         link1 = request.values["link1"]
         link2 = request.values["link2"]
         link3 = request.values["link3"]
         link4 = request.values["link4"]
         link5 = request.values["link5"] 
-        dblite.add_new_poll(id, passw, [link1,link2,link3,link4,link5], [0,0,0,0,0], "")
+        
+        result = db.execute_query(new_poll_query,(passw, del_passw,[link1,link2,link3,link4,link5]))
+        print('result ', result)
+        
         return render_template("index.html")
     
     return render_template('create.html', id=id, passw=passw)
