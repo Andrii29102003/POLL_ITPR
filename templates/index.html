@@ -14,21 +14,22 @@
             <h2 class="active">Пройти</h2>
             <h2 class="nonactive">Створити</h2>
 
-            <form method="POST">
+
+            <form method="POST" action="{{ url_for('take_poll') }}">
                 <input type="text" class="text" name="username">
                 <span>Ім'я користувача</span>
                 <br><br>
-
+            
                 <input type="text" class="text" name="ask_id">
                 <span>Код опитування</span>
                 <br><br>
-
+            
                 <!--<input type="checkbox" id="checkbox-1-1" class="custom-checkbox" name="is_create"/>
                 <label for="checkbox-1-1">Is Login to Ask</label> -->
                 <button class="signin" type="submit">Пройти опитування</button>
                 <hr>
-
             </form>
+            
         </div>
     </body>
 </html>
