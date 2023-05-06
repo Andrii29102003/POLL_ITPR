@@ -6,6 +6,7 @@ from dblite import DB
 from dblite import new_poll_query, create_db_tables, get_link_by_passw
 from side_func import * 
 import json
+
 app = Flask(__name__)
 file = "data.db"
 
@@ -112,7 +113,7 @@ def process_form():
     print(result, type(result))
     
     
-    return render_template('ask_dinamic.html', urls=json.loads(result[0][0]))
+    return render_template('ask_dinamic.html', people_name = people_name, urls=json.loads(result[0][0]))
 
 if __name__ == '__main__':
     app.run(debug=True)
