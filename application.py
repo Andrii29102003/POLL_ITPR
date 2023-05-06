@@ -3,7 +3,7 @@ from flask import request
 from flask import render_template
 import random 
 from dblite import DB
-from dblite import new_poll_query, create_db_tables
+from dblite import new_poll_query, create_db_tables, get_link_by_passw
 from side_func import * 
 import json
 
@@ -45,7 +45,7 @@ def index():
 
 
 # SOME TO DO
-@app.route('/ask', methods=['GET'])
+@app.route('/ask_dinamic', methods=['GET'])
 def ask():
     """TESTING"""    
     db = get_db()
@@ -103,6 +103,19 @@ def submit_form(id, passw):
 
     return 'Form submitted successfully!'
 
+
+@app.route('/take_poll', methods=['POST'])
+def process_form():
+    # Form processing logic here
+    people_name = request.form.get('username')
+    poll_passw = request.form.get('ask_id')
+    print('passw', poll_passw)
+    db = get_db()
+    result = db.execute_query(get_link_by_passw,(poll_passw,))
+    print(result, type(result))
+    
+    
+    return render_template('ask_dinamic.html', urls=json.loads(result[0][0]))
 
 if __name__ == '__main__':
     app.run(debug=True)

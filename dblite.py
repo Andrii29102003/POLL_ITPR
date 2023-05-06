@@ -49,7 +49,7 @@ create_db_tables = [create_results, create_polls]
 # result = db.execute_query("SELECT * FROM poll_data")
 
 
-
+get_link_by_passw = "SELECT links FROM poll_data WHERE passw=?"
 new_poll_query = "INSERT INTO poll_data(passw, del_passw, links) VALUES(?, ?, ?)"
 # class DB():
 #     def __init__(self, file_name):     #підключення до бази даних створення таблиці в ній таблиці
@@ -87,23 +87,23 @@ new_poll_query = "INSERT INTO poll_data(passw, del_passw, links) VALUES(?, ?, ?)
 #         return self.cur.fetchall()
     
 #     def delete(self, id):       #видалення опитування по id
-#         self.cur.execute("DELETE FROM poll_data WHERE id=?", (id))
-#         self.con.commit()
-#         return True
+        # self.cur.execute("DELETE FROM poll_data WHERE id=?", (id))
+        # self.con.commit()
+        # return True
     
     
-#     def update_poll_data(self, id, links, marks, tmp):      #оновлення даних опитування по id
-#         self.cur.execute("UPDATE poll_data SET links=?, marks=?, tmp=? WHERE id=?", (json.dumps(links), json.dumps(marks), json.dumps(tmp), id))
-#         self.con.commit()
-#         return True
+    # def update_poll_data(self, id, links, marks, tmp):      #оновлення даних опитування по id
+    #     self.cur.execute("UPDATE poll_data SET links=?, marks=?, tmp=? WHERE id=?", (json.dumps(links), json.dumps(marks), json.dumps(tmp), id))
+    #     self.con.commit()
+    #     return True
     
-#     def update_poll_marsk_by_id(self, id_to_update, marks):      #оновлення даних опитування по id
-#         self.cur.execute("UPDATE poll_data SET marks=? WHERE id=?", (json.dumps(marks), id_to_update))
-#         self.con.commit()
-#         return True
+    # def update_poll_marsk_by_id(self, id_to_update, marks):      #оновлення даних опитування по id
+    #     self.cur.execute("UPDATE poll_data SET marks=? WHERE id=?", (json.dumps(marks), id_to_update))
+    #     self.con.commit()
+    #     return True
     
-#     def update_poll_links_by_id(self, id_to_update, links):      #оновлення даних опитування по id
-#         self.cur.execute("UPDATE poll_data SET links=? WHERE id=?", (json.dumps(links), id_to_update))
-#         self.con.commit()
-#         return True
+    # def update_poll_links_by_id(self, id_to_update, links):      #оновлення даних опитування по id
+    #     self.cur.execute("UPDATE poll_data SET links=? WHERE id=?", (json.dumps(links), id_to_update))
+    #     self.con.commit()
+    #     return True
         
