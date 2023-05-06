@@ -58,13 +58,6 @@ def ask():
 #     return render_template('ask.html')
 
 
-# TO DO
-@app.route('/results', methods=['GET'])
-def results():
-    if request.method == 'GET':
-        return render_template('results.html', resultsOfAsk=resultsOfAsk)
-    else:
-        return render_template('ask.html')
 
 
 # TO DO
@@ -87,19 +80,36 @@ def create():
     
     return render_template('create.html', id=id, passw=passw, del_passw=del_passw)
 
+@app.route('/results/<people_name>', methods=["GET", 'POST'])
+def results(people_name):
+   
+    # Get the value of 'people_name' from the form
+    # people_name = request.form.get('people_name')
+    print('name ', people_name)
+    # Get the values of the input ranges from the form
+    input_values =  []
+    #cab  pass how many links
+    for url in range(2,7):
+        input_name = 'volume' + str(url)
+        input_value = request.form.get(input_name)
+        input_values.append(input_value)
+    db = get_db()
+    result = db.execute_query(get_link_by_passw,(update))
+    print(input_values)
+    return render_template('results.html', resultsOfAsk=1)
+    # if request.method == 'GET':
+    #     return render_template('results.html', resultsOfAsk=1)
+    # else:
+    #     return render_template('ask.html')
 
-@app.route('/submit_form/<int:id>/<string:passw>', methods=['GET']) # DO NOT USE
-def submit_form(id, passw):
-    print('resv ', id, passw)
-    link1 = request.args.get('link1')
-    link2 = request.args.get('link2')
-    link3 = request.args.get('link3')
-    link4 = request.args.get('link4')
-    link5 = request.args.get('link5')
+# @app.route('/submit_form/<int:id>/<string:passw>', methods=['GET']) # DO NOT USE
+# def submit_form(id, passw):
+#     print('resv ', id, passw)
 
-    dblite.add_new_poll(passw,[link1,link2,link3,link4,link5], )
 
-    return 'Form submitted successfully!'
+#     # dblite.add_new_poll(passw,[link1,link2,link3,link4,link5], )
+
+#     return 'Form submitted successfully!'
 
 
 @app.route('/take_poll', methods=['POST'])

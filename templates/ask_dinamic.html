@@ -19,7 +19,7 @@
 
         <h2 class="headtext">ОЦІНІТЬ НАСКІЛЬКИ ВАМ ПОДОБАЄТЬСЯ ЗОБРАЖЕННЯ</h2>
         <hr>
-        <form action="results"> 
+        <form method="POST" action="{{ url_for('results', people_name=people_name) }}">
             {% for url in urls %}
             <div>
                 <img src="{{ url }}" alt="Image" width="300">
