@@ -1,13 +1,15 @@
 from flask import Flask, g
 from flask import request
 from flask import render_template
+from flask import session
 import random 
 from dblite import DB
-from dblite import new_poll_query, create_db_tables, get_link_by_passw
+from dblite import new_poll_query, create_db_tables, get_link_by_passw, save_poll_result
 from side_func import * 
 import json
 
 app = Flask(__name__)
+app.secret_key = 'KaixenixTOP'
 file = "data.db"
 
 
@@ -94,8 +96,12 @@ def results(people_name):
         input_value = request.form.get(input_name)
         input_values.append(input_value)
     db = get_db()
-    result = db.execute_query(get_link_by_passw,(update))
-    print(input_values)
+    passw = session.get(people_name)
+    try: 
+        result = db.execute_query(save_poll_result,(passw, people_name, json.dumps(input_values)))
+    except: 
+        return 'Ваша відповідь уже записана'
+    
     return render_template('results.html', resultsOfAsk=1)
     # if request.method == 'GET':
     #     return render_template('results.html', resultsOfAsk=1)
@@ -117,6 +123,7 @@ def process_form():
     # Form processing logic here
     people_name = request.form.get('username')
     poll_passw = request.form.get('ask_id')
+    session[people_name] = poll_passw
     print('passw', poll_passw)
     db = get_db()
     result = db.execute_query(get_link_by_passw,(poll_passw,))

@@ -42,13 +42,13 @@ class DB:
     
     
 create_polls   = "CREATE TABLE IF NOT EXISTS poll_data (id INTEGER PRIMARY KEY, passw CHAR(10) UNIQUE, del_passw CHAR(10), links CHAR(12000))"
-create_results = "CREATE TABLE IF NOT EXISTS poll_results (id INTEGER PRIMARY KEY, passw CHAR(10) UNIQUE, name CHAR(128), marks CHAR(200), recorded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)"
+create_results = "CREATE TABLE IF NOT EXISTS poll_results (id INTEGER PRIMARY KEY, passw CHAR(10), name CHAR(128) UNIQUE, marks CHAR(200), recorded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)"
 
 create_db_tables = [create_results, create_polls]
 
 # result = db.execute_query("SELECT * FROM poll_data")
 
-
+save_poll_result = "INSERT INTO poll_results(passw, name, marks) VALUES(?, ?, ?)"
 get_link_by_passw = "SELECT links FROM poll_data WHERE passw=?"
 new_poll_query = "INSERT INTO poll_data(passw, del_passw, links) VALUES(?, ?, ?)"
 # class DB():
