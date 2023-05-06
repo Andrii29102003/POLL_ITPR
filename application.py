@@ -2,9 +2,8 @@ from flask import Flask, g
 from flask import request
 from flask import render_template
 import random 
-from dblite import DB
-from dblite import new_poll_query, create_db_tables
-from side_func import * 
+from loader import dblite
+
 
 
 app = Flask(__name__)
@@ -82,13 +81,10 @@ def create():
         link3 = request.values["link3"]
         link4 = request.values["link4"]
         link5 = request.values["link5"] 
-        
-        result = db.execute_query(new_poll_query,(passw, del_passw,[link1,link2,link3,link4,link5]))
-        print('result ', result)
-        
+        dblite.add_new_poll(id, passw, [link1,link2,link3,link4,link5], [0,0,0,0,0], "")
         return render_template("index.html")
     
-    return render_template('create.html', id=id, passw=passw)
+    return render_template('create.html', id=id, passw=passw, del_passw=del_passw)
 
 
 @app.route('/submit_form/<int:id>/<string:passw>', methods=['GET']) # DO NOT USE

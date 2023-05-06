@@ -25,6 +25,10 @@ class DB:
             cursor.execute(query)
         else:
             cursor.execute(query, params)
+<<<<<<< HEAD
+=======
+            self.db.commit()
+>>>>>>> ba9e2b96270d4845bf6e7e5471af3e2e98c13b20
         result = cursor.fetchall()
         cursor.close()
         return result
@@ -40,8 +44,13 @@ class DB:
     #     return result
     
     
+<<<<<<< HEAD
 create_polls   = "CREATE TABLE IF NOT EXISTS poll_data (id INTEGER PRIMARY KEY, passw CHAR(10), del_passw CHAR(10), links CHAR(12000))"
 create_results = "CREATE TABLE IF NOT EXISTS poll_results (id INTEGER PRIMARY KEY, passw CHAR(10), name CHAR(128), marks CHAR(200), recorded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)"
+=======
+create_polls   = "CREATE TABLE IF NOT EXISTS poll_data (id INTEGER PRIMARY KEY, passw CHAR(10) UNIQUE, del_passw CHAR(10), links CHAR(12000))"
+create_results = "CREATE TABLE IF NOT EXISTS poll_results (id INTEGER PRIMARY KEY, passw CHAR(10) UNIQUE, name CHAR(128), marks CHAR(200), recorded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)"
+>>>>>>> ba9e2b96270d4845bf6e7e5471af3e2e98c13b20
 
 create_db_tables = [create_results, create_polls]
 
