@@ -5,9 +5,13 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    {% for image, scores in data.items() %}
-        <h2>Image {{ image }} Scores</h2>
-        <canvas id="chart{{ image }}" width="300" height="300"></canvas>
+        {% for image, scores in data.items() %}
+            <div name="ask-div">
+                <img src="{{  }}" alt="Image">
+                <input type="range" id="volume{{ loop.index + 1}}" name="volume{{ loop.index + 1}}" min="1" max="5">
+                <button type="button" class='mark-button' disabled="true">{%%}</button>
+            </div>
+        {% endfor %}
 
 
         <script>
