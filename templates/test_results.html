@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_result.css') }}">
     <title>Pie Charts</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+
+    <div class="main-div">
+        <h2 class="headtext">РЕЗУЛЬТАТИ ОПИТУВАННЯ</h2>
         {% for image, scores in data.items() %}
-            <div name="ask-div">
-                <img src="{{  }}" alt="Image">
+        
+            <div class="ask-div">
+                <img src="{{ urls[image-1] }}" alt="Image">
                 <input type="range" id="volume{{ loop.index + 1}}" name="volume{{ loop.index + 1}}" min="1" max="5">
-                <button type="button" class='mark-button' disabled="true">{%%}</button>
+                <button type="button" class='mark-button' disabled="true">{{scores}}</button>
+              
             </div>
         {% endfor %}
-
+    </div>
 
         <script>
             var canvas = document.getElementById('chart{{ image }}');
@@ -37,6 +43,5 @@
                 }
             });
         </script>
-    {% endfor %}
 </body>
 </html>
