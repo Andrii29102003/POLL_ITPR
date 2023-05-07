@@ -1,42 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Results</title>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>Pie Charts</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div id="chart"></div>
+    {% for image, scores in data.items() %}
+        <h2>Image {{ image }} Scores</h2>
+        <canvas id="chart{{ image }}" width="300" height="300"></canvas>
 
-    <script>
-        // Retrieve the scores data passed from Flask
-        const scores = {{ data }};
 
-        // Extract the keys and values from the scores dictionary
-        const keys = Object.keys(scores);
-        const values = Object.values(scores);
-        console.log(keys,"AAA", values);
-        for (var i = 0; i < keys.length; i++) {
-            document.write(keys[i]);
-            for (var j=0; j < values[i].length; j++) {
-                document.write(values[i][j], "<br>");
-            }
-            document.write("<hr>");
-        }
-        // Create a trace for the histogram
-        const trace = {
-            x: values,
-            type: 'histogram'
-        };
-
-        // Define the layout for the histogram
-        const layout = {
-            title: 'Scores Distribution',
-            xaxis: { title: 'Scores' },
-            yaxis: { title: 'Frequency' }
-        };
-
-        // Create the plot using Plotly
-        Plotly.newPlot('chart', [trace], layout);
-    </script>
+        <script>
+            var canvas = document.getElementById('chart{{ image }}');
+            var ctx = canvas.getContext('2d');
+            var width = canvas.width;
+            var height = canvas.height;
+            var aspectRatio = width / height;
+            
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: values,
+                        backgroundColor: ['red', 'blue', 'green', 'yellow', 'orange'],
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    aspectRatio: aspectRatio
+                }
+            });
+        </script>
+    {% endfor %}
 </body>
 </html>
