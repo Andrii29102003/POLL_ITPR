@@ -162,7 +162,7 @@ def process_form():
     try: 
         urls = json.loads(result[0][0])
     except: 
-        return f'Немає такого пула як {poll_passw}, перевірте коректність, або Адміністратор уже видалив даний пул'
+        return f'Немає такого опитування як {poll_passw}, перевірте коректність, або Адміністратор вже видалив його'
 
     return render_template('ask_dinamic.html', people_name = people_name, urls=urls)
 
