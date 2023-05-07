@@ -129,10 +129,19 @@ def results(people_name):
     print(scores_counted)
     passed_poll_times = len(result)
     
+    result = db.execute_query(get_link_by_passw,(passw,))
+    print(result, type(result))
+    
+    try: 
+        urls = json.loads(result[0][0])
+    except: 
+        return f'Немає такого опитування як {passw}, перевірте коректність, або Адміністратор вже видалив його'
+
+    
                 
     
     #return render_template('results_cool.html', data=scores_counted, passed_poll_times= passed_poll_times)
-    return render_template('test_results.html', data=scores_counted, passed_poll_times= passed_poll_times)
+    return render_template('test_results.html', data=scores_counted, passed_poll_times= passed_poll_times, urls= urls)
 
     # if request.method == 'GET':
     #     return render_template('results.html', resultsOfAsk=1)
