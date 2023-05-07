@@ -2,33 +2,34 @@
 <html>
 <head>
     <title>Results</title>
-    <style>
-        table {
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-        }
-    </style>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
-    <h1>Results</h1>
-    <table>
-        <tr>
-            <th>Image Number</th>
-            <th>Scores</th>
-        </tr>
-        {% for key, values in data.items() %}
-        <tr>
-            <td>{{ key }}</td>
-            <td>
-                {% for value in values %}
-                {{ value }}
-                {% endfor %}
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
+    <div id="chart"></div>
+
+    <script>
+        // Retrieve the scores data passed from Flask
+        const scores = {{ scores | tojson }};
+
+        // Extract the keys and values from the scores dictionary
+        const keys = Object.keys(scores);
+        const values = Object.values(scores);
+
+        // Create a trace for the histogram
+        const trace = {
+            x: values,
+            type: 'histogram'
+        };
+
+        // Define the layout for the histogram
+        const layout = {
+            title: 'Scores Distribution',
+            xaxis: { title: 'Scores' },
+            yaxis: { title: 'Frequency' }
+        };
+
+        // Create the plot using Plotly
+        Plotly.newPlot('chart', [trace], layout);
+    </script>
 </body>
 </html>
