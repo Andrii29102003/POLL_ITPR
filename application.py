@@ -77,7 +77,9 @@ def create():
         link3 = request.values["link3"]
         link4 = request.values["link4"]
         link5 = request.values["link5"] 
-        dblite.add_new_poll(id, passw, [link1,link2,link3,link4,link5], [0,0,0,0,0], "")
+        #тут закоментив dblite бо його не імпортовано і він переробляєтьч=ся,
+        #а мені не подобається повідомлення про помилку
+        #dblite.add_new_poll(id, passw, [link1,link2,link3,link4,link5], [0,0,0,0,0], "")
         return render_template("index.html")
     
     return render_template('create.html', id=id, passw=passw, del_passw=del_passw)
