@@ -2,9 +2,10 @@ from flask import Flask, g
 from flask import request
 from flask import render_template
 from flask import session
+import matplotlib.pyplot as plt
 import random 
 from dblite import DB
-from dblite import new_poll_query, create_db_tables, get_link_by_passw, save_poll_result
+from dblite import new_poll_query, create_db_tables, get_link_by_passw, save_poll_result, get_poll_answ
 from side_func import * 
 import json
 
@@ -99,18 +100,19 @@ def results(people_name):
         input_values.append(input_value)
     db = get_db()
     passw = session.get(people_name)
-    # try: 
-    #     result = db.execute_query(save_poll_result,(passw, people_name, json.dumps(input_values)))
-    # except: 
-    #     return 'Ваша відповідь уже записана'
+    try: 
+        db.execute_query(save_poll_result,(passw, people_name, json.dumps(input_values)))
+    except: 
+        return 'Ваша відповідь уже записана' #TO DO добавити сторінку де можна буде перейти зразу до результатів
     
-    # return render_template('results.html', resultsOfAsk=1)
+    result = db.execute_query(get_poll_answ,(passw,))
+    print(result)
+    return render_template('results.html', resultsOfAsk=1)
 
-    poll_answers = [1, 5, 3, 4]  # Example data, replace this with your fetched data
-    labels = [f'Answer {i + 1}' for i in range(len(poll_answers))]  # Generate labels
+    
+    
 
-    # Pass the data, labels, and any other required variables to the HTML template
-    return render_template('results_cool.html', poll_answers=poll_answers, labels=labels)
+    return render_template('results_cool.html', image_path=image_path)
 
     # if request.method == 'GET':
     #     return render_template('results.html', resultsOfAsk=1)

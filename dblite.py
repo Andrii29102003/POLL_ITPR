@@ -51,6 +51,7 @@ create_db_tables = [create_results, create_polls]
 save_poll_result = "INSERT INTO poll_results(passw, name, marks) VALUES(?, ?, ?)"
 get_link_by_passw = "SELECT links FROM poll_data WHERE passw=?"
 new_poll_query = "INSERT INTO poll_data(passw, del_passw, links) VALUES(?, ?, ?)"
+get_poll_answ  = "SELECT name, marks, recorded_at FROM poll_results WHERE passw=?"
 # class DB():
 #     def __init__(self, file_name):     #підключення до бази даних створення таблиці в ній таблиці
 #         self.db = None

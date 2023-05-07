@@ -1,57 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Circle Diagrams</title>
-  <style>
-    canvas {
-      display: block;
-      margin: 20px auto;
-    }
-  </style>
+    <title>Histogram</title>
 </head>
 <body>
-  <canvas id="circleCanvas1" width="200" height="200"></canvas>
-  <canvas id="circleCanvas2" width="200" height="200"></canvas>
-
-  <script>
-    // Function to draw a circle diagram
-    function drawCircleDiagram(canvasId, scores, frequencies) {
-      var canvas = document.getElementById(canvasId);
-      var context = canvas.getContext('2d');
-      var centerX = canvas.width / 2;
-      var centerY = canvas.height / 2;
-      var radius = Math.min(centerX, centerY) * 0.9;
-
-      var total = frequencies.reduce((a, b) => a + b, 0);
-
-      // Calculate the angle for each score
-      var startAngle = -Math.PI / 2;
-      var angles = frequencies.map(frequency => (frequency / total) * (2 * Math.PI));
-
-      // Draw the circle segments
-      for (var i = 0; i < scores.length; i++) {
-        var endAngle = startAngle + angles[i];
-        context.beginPвхода.' + Math.floor(Math.random() * 16777215).toString(16);
-        context.fillStyle = color;
-        context.fill();
-
-        startAngle = endAngle;
-      }
-    }
-
-    // Data for the first diagram
-    var scores1 = [1, 2, 3, 4, 5];
-    var frequencies1 = [4, 10, 7, 15];
-
-    // Data for the second diagram
-    var scores2 = [1, 2, 3, 4, 5];
-    var frequencies2 = [6, 8, 12, 9];
-
-    // Draw the first diagram
-    drawCircleDiagram("circleCanvas1", scores1, frequencies1);
-
-    // Draw the second diagram
-    drawCircleDiagram("circleCanvas2", scores2, frequencies2);
-  </script>
+    <h1>Histogram</h1>
+    <img src="{{ image_path }}" alt="Histogram">
 </body>
 </html>
