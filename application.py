@@ -2,7 +2,7 @@ from flask import Flask, g
 from flask import request
 from flask import render_template
 from flask import session
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import random 
 from dblite import DB
 from collections import Counter
