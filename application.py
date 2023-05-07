@@ -5,6 +5,7 @@ from flask import session
 import matplotlib.pyplot as plt
 import random 
 from dblite import DB
+from collections import Counter
 from dblite import new_poll_query, create_db_tables, get_link_by_passw, save_poll_result, get_poll_answ
 from side_func import * 
 import json
@@ -110,7 +111,6 @@ def results(people_name):
     
     result = db.execute_query(get_poll_answ,(passw,))
     print(result)
-    poll_statistics = {}
     
     scores = {}
     for i in range(len(json.loads(result[0][1]))):
@@ -118,21 +118,20 @@ def results(people_name):
         scores[i] = []
         for j, data in enumerate(result):
             lst = json.loads(data[1])
-            print(scores)
             scores[i].append(int(lst[i-1]))
+        scores[i] = sorted(scores[i])
+    
+    scores_counted = {}      
+    for key, values in scores.items():
+        scores_counted[key] = dict(Counter(values))
+
             
-            
-            
-            
-    print(scores)
+    print(scores_counted)
+    passed_poll_times = len(result)
+    
                 
     
-    # return render_template('results.html', resultsOfAsk=1)
-
-    
-    
-
-    return render_template('results_cool.html', data=scores)
+    return render_template('results_cool.html', data=scores_counted, passed_poll_times= passed_poll_times)
 
     # if request.method == 'GET':
     #     return render_template('results.html', resultsOfAsk=1)
