@@ -131,7 +131,11 @@ def process_form():
     result = db.execute_query(get_link_by_passw,(poll_passw,))
     print(result, type(result))
     
-    
+    try: 
+        urls = json.loads(result[0][0])
+    except: 
+        return f'Немає такого пула як {poll_passw}, перевірте коректність, або Адміністратор уже видалив даний пул'
+
     return render_template('ask_dinamic.html', people_name = people_name, urls=json.loads(result[0][0]))
 
 if __name__ == '__main__':
