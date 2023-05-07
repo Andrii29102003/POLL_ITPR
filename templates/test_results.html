@@ -10,7 +10,11 @@
     <div class="main-div">
         <h2 class="headtext">РЕЗУЛЬТАТИ ОПИТУВАННЯ</h2>
         {% for image, scores in data.items() %}
-        
+            {%for score in scores %}
+                {%avg=3%}
+                {%marksCount=1%}
+                {%for mark in score%}
+            {% endfor %}
             <div class="ask-div">
                 <img src="{{ urls[image-1] }}" alt="Image">
                 <input type="range" id="volume{{ loop.index + 1}}" name="volume{{ loop.index + 1}}" min="1" max="5">
