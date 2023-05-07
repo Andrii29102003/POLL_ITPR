@@ -131,7 +131,8 @@ def results(people_name):
     
                 
     
-    return render_template('results_cool.html', data=scores_counted, passed_poll_times= passed_poll_times)
+    #return render_template('results_cool.html', data=scores_counted, passed_poll_times= passed_poll_times)
+    return render_template('test_results.html', data=scores_counted, passed_poll_times= passed_poll_times)
 
     # if request.method == 'GET':
     #     return render_template('results.html', resultsOfAsk=1)
