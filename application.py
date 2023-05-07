@@ -127,15 +127,12 @@ def results(people_name):
     print(scores)
                 
     
-    sorted_statistics = dict(sorted(poll_statistics.items()))
-    
-    
-    return render_template('results.html', resultsOfAsk=1)
+    # return render_template('results.html', resultsOfAsk=1)
 
     
     
 
-    return render_template('results_cool.html', image_path=image_path)
+    return render_template('results_cool.html', data=scores)
 
     # if request.method == 'GET':
     #     return render_template('results.html', resultsOfAsk=1)
