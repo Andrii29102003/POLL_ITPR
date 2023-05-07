@@ -6,12 +6,6 @@
         <title>
             Опитування
         </title>
-        <style>
-            img {
-              max-width: 400px;
-              height: auto;
-            }
-          </style>
     </head>
 
     <body>
@@ -23,14 +17,16 @@
         <form method="POST" action="{{ url_for('results', people_name=people_name) }}">
             {% for url in urls %}
             <div name="ask-div">
-                <img src="{{ url }}" alt="Image" width="300">
+                <img src="{{ url }}" alt="Image">
               <input type="range" id="volume{{ loop.index + 1}}" name="volume{{ loop.index + 1}}" min="1" max="5">
-                  <button id="recordButton{{ loop.index + 1}}" type="button"class = 'voiceButton'>Голосом</button>
+                  <button id="recordButton{{ loop.index + 1}}" type="button" class = 'record-button'>Голосом</button>
             </div>
             {% endfor %}
 
         <!-- Відправити -->
+        <div name="ask-div">
         <input type="submit" id="submit" name="submit" >
+        </div>
         </form>
         </div>
 
