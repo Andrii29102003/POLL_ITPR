@@ -3,10 +3,25 @@ BODY STYLE
 ######################*/
 
 body{
-    background-color: #505050;
-    background-size: cover;
-    background-size: 150%;
+    background-color: #d3d3d3;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 1px;
   }
+
+/*######################
+HEADTEXT STYLE
+######################*/
+
+.headtext{
+    color: #737373;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
 
 
 /*######################
@@ -27,4 +42,57 @@ div[name="ask-div"]{
     display: flex;
     align-items: center; 
     justify-content: center;
+}
+
+/*######################
+MAIN-DIV STYLE
+######################*/
+
+.main-div {
+    position: relative;
+    height: 650px;
+    width: 500px;
+    margin: auto;
+    padding: 30px 30px;
+    background: url(https://picsum.photos/id/1004/5616/3744) no-repeat center center #505050;
+    background-size: cover;
+    box-shadow: 0px 30px 60px -5px #000;
+  }
+
+/*######################
+RECORD-BUTTON STYLE
+######################*/
+
+.record-button{
+    background-color: #737373;
+    border: none;
+    color: #505050;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 25%;
+}
+
+/*######################
+SUBMIT STYLE
+######################*/
+
+#submit{
+    background-color: #737373;
+    border: none;
+    color: #505050;
+    padding: 15px 15px;
+    margin: 0 auto;
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 12px;
+    width: 83%;
 }

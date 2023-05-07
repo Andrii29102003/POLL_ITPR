@@ -11,43 +11,43 @@
 
     <body>
 
+        <div class="main-div">
         <h2 class="headtext">ОЦІНІТЬ ЗОБРАЖЕННЯ</h2>
-        <hr>
         <form action="results" id="mainForm"> 
         
         <!-- Питання1 -->
         <div name="ask-div">
         <img src = "{{url_for('static', filename='img/img1.bmp')}}">
         <input type="range" id="volume1" name="volume1" min="1" max="5">
-        <button id="recordButton1" type="button">Скажіть</button>
+        <button id="recordButton1" type="button" class="record-button">Скажіть</button>
         </div><br>
 
         <!-- Питання2 -->
         <div name="ask-div">
         <img src = "{{url_for('static', filename='img/img2.bmp')}}">
         <input type="range" id="volume2" name="volume2" min="1" max="5">
-        <button id="recordButton2" type="button">Скажіть</button>
+        <button id="recordButton2" type="button" class="record-button">Скажіть</button>
         </div><br>
 
         <!-- Питання3 -->
         <div name="ask-div">
         <img src = "{{url_for('static', filename='img/img3.bmp')}}">
         <input type="range" id="volume3" name="volume3" min="1" max="5">
-        <button id="recordButton3" type="button">Скажіть</button>
+        <button id="recordButton3" type="button" class="record-button">Скажіть</button>
         </div><br>
 
         <!-- Питання4 -->
         <div name="ask-div">
         <img src = "{{url_for('static', filename='img/img4.bmp')}}">
         <input type="range" id="volume4" name="volume4" min="1" max="5">
-        <button id="recordButton4" type="button">Скажіть</button>
+        <button id="recordButton4" type="button" class="record-button">Скажіть</button>
         </div><br>
 
         <!-- Питання5 -->
         <div name="ask-div">
         <img src = "{{url_for('static', filename='img/img5.bmp')}}">
         <input type="range" id="volume5" name="volume5" min="1" max="5">
-        <button id="recordButton5" type="button">Скажіть</button>
+        <button id="recordButton5" type="button" class="record-button">Скажіть</button>
         </div><br>
 
         <!-- Відправити -->
@@ -55,6 +55,7 @@
         <input type="submit" id="submit" name="submit" >
         </div>
         </form>
+        </div>
 
 
         <script>
