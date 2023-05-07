@@ -8,6 +8,7 @@ from dblite import DB
 from dblite import new_poll_query, create_db_tables, get_link_by_passw, save_poll_result, get_poll_answ
 from side_func import * 
 import json
+import time
 
 app = Flask(__name__)
 app.secret_key = 'KaixenixTOP'
@@ -87,7 +88,8 @@ def create():
 
 @app.route('/results/<people_name>', methods=["GET", 'POST'])
 def results(people_name):
-   
+    if request.method == 'GET': 
+        return render_template("index.html")
     # Get the value of 'people_name' from the form
     # people_name = request.form.get('people_name')
     print('name ', people_name)
@@ -102,11 +104,32 @@ def results(people_name):
     passw = session.get(people_name)
     try: 
         db.execute_query(save_poll_result,(passw, people_name, json.dumps(input_values)))
+        time_answ_save = time.time()
     except: 
         return 'Ваша відповідь уже записана' #TO DO добавити сторінку де можна буде перейти зразу до результатів
     
     result = db.execute_query(get_poll_answ,(passw,))
     print(result)
+    poll_statistics = {}
+    
+    scores = {}
+    for i in range(len(json.loads(result[0][1]))):
+        i = i+1
+        scores[i] = []
+        for j, data in enumerate(result):
+            lst = json.loads(data[1])
+            print(scores)
+            scores[i].append(int(lst[i-1]))
+            
+            
+            
+            
+    print(scores)
+                
+    
+    sorted_statistics = dict(sorted(poll_statistics.items()))
+    
+    
     return render_template('results.html', resultsOfAsk=1)
 
     
