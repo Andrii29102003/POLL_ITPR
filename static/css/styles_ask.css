@@ -1,0 +1,30 @@
+/*######################
+BODY STYLE
+######################*/
+
+body{
+    background-color: #505050;
+    background-size: cover;
+    background-size: 150%;
+  }
+
+
+/*######################
+MAINFORM STYLE
+######################*/
+
+#mainForm{
+    margin: 0 auto; 
+    width: 500px;
+    
+}
+
+/*######################
+ASK-DIV STYLE
+######################*/
+
+div[name="ask-div"]{ 
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+}
