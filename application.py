@@ -77,7 +77,7 @@ def create():
         link3 = request.values["link3"]
         link4 = request.values["link4"]
         link5 = request.values["link5"] 
-        #тут закоментив dblite бо його не імпортовано і він переробляєтьч=ся,
+        #тут закоментив dblite бо його не імпортовано і він переробляється,
         #а мені не подобається повідомлення про помилку
         #dblite.add_new_poll(id, passw, [link1,link2,link3,link4,link5], [0,0,0,0,0], "")
         return render_template("index.html")
@@ -133,6 +133,18 @@ def process_form():
     
     
     return render_template('ask_dinamic.html', people_name = people_name, urls=json.loads(result[0][0]))
+
+
+#TEST
+@app.route('/test_ask', methods=['GET'])
+def test_ask():
+    pass
+#####
+
+
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
