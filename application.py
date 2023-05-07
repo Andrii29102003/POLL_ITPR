@@ -137,11 +137,20 @@ def results(people_name):
     except: 
         return f'Немає такого опитування як {passw}, перевірте коректність, або Адміністратор вже видалив його'
 
+    count=0
+    sum=0
+    avgMark=[]
+    for key, value in scores_counted.items():
+        for key, mark in value.items():
+            sum+=key*mark
+            count+=mark
+            avgMark.append(round(sum/count, 1))
     
-                
-    
+    print(avgMark)#DEL
+        
+
     #return render_template('results_cool.html', data=scores_counted, passed_poll_times= passed_poll_times)
-    return render_template('test_results.html', data=scores_counted, passed_poll_times= passed_poll_times, urls= urls)
+    return render_template('test_results.html', data=scores_counted, passed_poll_times= passed_poll_times, urls= urls, avgMark=avgMark)
 
     # if request.method == 'GET':
     #     return render_template('results.html', resultsOfAsk=1)

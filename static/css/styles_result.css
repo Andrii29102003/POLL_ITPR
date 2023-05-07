@@ -65,7 +65,7 @@ MAIN-DIV STYLE
 RECORD-BUTTON STYLE
 ######################*/
 
-.record-button{
+.mark-button{
     background-color: #737373;
     border: none;
     color: #505050;
@@ -76,7 +76,6 @@ RECORD-BUTTON STYLE
     font-size: 24px;
     cursor: pointer;
     border-radius: 10px;
-    width: 25%;
 }
 
 /*######################
