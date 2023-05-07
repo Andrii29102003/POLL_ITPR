@@ -75,14 +75,12 @@ def create():
     # result = db.execute_query("SELECT * FROM poll_data")
     id=len(db.execute_query("SELECT * FROM poll_data")) + 1
     if request.method == "POST":
-        link1 = request.values["link1"]
-        link2 = request.values["link2"]
-        link3 = request.values["link3"]
-        link4 = request.values["link4"]
-        link5 = request.values["link5"] 
-        #тут закоментив dblite бо його не імпортовано і він переробляється,
-        #а мені не подобається повідомлення про помилку
-        #dblite.add_new_poll(id, passw, [link1,link2,link3,link4,link5], [0,0,0,0,0], "")
+        links = 5 
+        str_links = ['link' + str(i) for i in range(1, links+1)]
+        url_links = [request.values[str_link] for str_link in str_links]
+        
+        print(url_links)
+        db.execute_query(new_poll_query, (passw, del_passw, json.dumps(url_links)))
         return render_template("index.html")
     
     return render_template('create.html', id=id, passw=passw, del_passw=del_passw)
@@ -90,9 +88,10 @@ def create():
 @app.route('/results/<people_name>', methods=["GET", 'POST'])
 def results(people_name):
     if request.method == 'GET': 
-        return render_template("index.html")
-    # Get the value of 'people_name' from the form
-    # people_name = request.form.get('people_name')
+        pass
+        # return render_template("index.html")
+
+
     print('name ', people_name)
     # Get the values of the input ranges from the form
     input_values =  []
@@ -107,7 +106,8 @@ def results(people_name):
         db.execute_query(save_poll_result,(passw, people_name, json.dumps(input_values)))
         time_answ_save = time.time()
     except: 
-        return 'Ваша відповідь уже записана' #TO DO добавити сторінку де можна буде перейти зразу до результатів
+        pass
+        # return 'Ваша відповідь уже записана' #TO DO добавити сторінку де можна буде перейти зразу до результатів
     
     result = db.execute_query(get_poll_answ,(passw,))
     print(result)
@@ -174,17 +174,6 @@ def test_ask():
     pass
 #####
 
-@app.route('/poll_statistics/<poll_code>')
-def poll_statistics(poll_code):
-    # Fetch the poll answers and calculate the average score from SQLite3 based on the poll code
-    # Retrieve the names and poll code as needed
-
-    # Generate the chart data and labels based on the poll answers
-    poll_answers = [1, 5, 3, 4]  # Example data, replace this with your fetched data
-    labels = [f'Answer {i + 1}' for i in range(len(poll_answers))]  # Generate labels
-
-    # Pass the data, labels, and any other required variables to the HTML template
-    return render_template('results_cool.html', poll_answers=poll_answers, labels=labels)
 
 
 
