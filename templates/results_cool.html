@@ -1,35 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Results</title>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>Pie Charts</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div id="chart"></div>
+    {% for image, scores in data.items() %}
+        <h2>Image {{ image }} Scores</h2>
+        <canvas id="chart{{ image }}"></canvas>
+        <script>
+            var scores = {{ scores|tojson }};
+            var labels = Object.keys(scores);
+            var values = Object.values(scores);
 
-    <script>
-        // Retrieve the scores data passed from Flask
-        const scores = {{ data }};
-
-        // Extract the keys and values from the scores dictionary
-        const keys = Object.keys(scores);
-        const values = Object.values(scores);
-
-        // Create a trace for the histogram
-        const trace = {
-            x: values,
-            type: 'histogram'
-        };
-
-        // Define the layout for the histogram
-        const layout = {
-            title: 'Scores Distribution',
-            xaxis: { title: 'Scores' },
-            yaxis: { title: 'Frequency' }
-        };
-
-        // Create the plot using Plotly
-        Plotly.newPlot('chart', [trace], layout);
-    </script>
+            new Chart(document.getElementById('chart{{ image }}'), {
+                type: 'pie',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: values,
+                        backgroundColor: ['red', 'blue', 'green', 'yellow', 'orange'],
+                    }]
+                },
+            });
+        </script>
+    {% endfor %}
 </body>
 </html>

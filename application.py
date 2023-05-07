@@ -90,9 +90,10 @@ def create():
 @app.route('/results/<people_name>', methods=["GET", 'POST'])
 def results(people_name):
     if request.method == 'GET': 
-        return render_template("index.html")
-    # Get the value of 'people_name' from the form
-    # people_name = request.form.get('people_name')
+        pass
+        # return render_template("index.html")
+
+
     print('name ', people_name)
     # Get the values of the input ranges from the form
     input_values =  []
@@ -107,7 +108,8 @@ def results(people_name):
         db.execute_query(save_poll_result,(passw, people_name, json.dumps(input_values)))
         time_answ_save = time.time()
     except: 
-        return 'Ваша відповідь уже записана' #TO DO добавити сторінку де можна буде перейти зразу до результатів
+        pass
+        # return 'Ваша відповідь уже записана' #TO DO добавити сторінку де можна буде перейти зразу до результатів
     
     result = db.execute_query(get_poll_answ,(passw,))
     print(result)
