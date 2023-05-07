@@ -30,7 +30,7 @@ MAINFORM STYLE
 
 #mainForm{
     margin: 0 auto; 
-    width: 500px;
+    width: 800px;
     
 }
 
@@ -53,7 +53,7 @@ MAIN-DIV STYLE
     position: relative;
     /*height: 650px;*/
     height: auto;
-    width: 700px;
+    width: 900px;
     margin: auto;
     padding: 30px 30px;
     background: url(https://picsum.photos/id/1004/5616/3744) no-repeat center center #505050;
