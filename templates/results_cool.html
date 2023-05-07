@@ -7,13 +7,17 @@
 <body>
     {% for image, scores in data.items() %}
         <h2>Image {{ image }} Scores</h2>
-        <canvas id="chart{{ image }}"></canvas>
-        <script>
-            var scores = {{ scores|tojson }};
-            var labels = Object.keys(scores);
-            var values = Object.values(scores);
+        <canvas id="chart{{ image }}" width="300" height="300"></canvas>
 
-            new Chart(document.getElementById('chart{{ image }}'), {
+
+        <script>
+            var canvas = document.getElementById('chart{{ image }}');
+            var ctx = canvas.getContext('2d');
+            var width = canvas.width;
+            var height = canvas.height;
+            var aspectRatio = width / height;
+            
+            new Chart(ctx, {
                 type: 'pie',
                 data: {
                     labels: labels,
@@ -22,6 +26,11 @@
                         backgroundColor: ['red', 'blue', 'green', 'yellow', 'orange'],
                     }]
                 },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    aspectRatio: aspectRatio
+                }
             });
         </script>
     {% endfor %}
