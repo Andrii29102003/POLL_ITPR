@@ -9,7 +9,7 @@
 
     <script>
         // Retrieve the scores data passed from Flask
-        const scores = {{ scores | tojson }};
+        const scores = {{ data }};
 
         // Extract the keys and values from the scores dictionary
         const keys = Object.keys(scores);
