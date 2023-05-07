@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <div id="chart"></div>
+
+    <script>
+        // Retrieve the scores data passed from Flask
+        const scores = {{ data }};
+
+        // Extract the keys and values from the scores dictionary
+        const keys = Object.keys(scores);
+        const values = Object.values(scores);
+
+        // Create a trace for the histogram
+        const trace = {
+            x: values,
+            type: 'histogram'
+        };
+
+        // Define the layout for the histogram
+        const layout = {
+            title: 'Scores Distribution',
+            xaxis: { title: 'Scores' },
+            yaxis: { title: 'Frequency' }
+        };
+
+        // Create the plot using Plotly
+        Plotly.newPlot('chart', [trace], layout);
+    </script>
+</body>
+</html>
