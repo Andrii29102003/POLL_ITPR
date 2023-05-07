@@ -99,12 +99,19 @@ def results(people_name):
         input_values.append(input_value)
     db = get_db()
     passw = session.get(people_name)
-    try: 
-        result = db.execute_query(save_poll_result,(passw, people_name, json.dumps(input_values)))
-    except: 
-        return 'Ваша відповідь уже записана'
+    # try: 
+    #     result = db.execute_query(save_poll_result,(passw, people_name, json.dumps(input_values)))
+    # except: 
+    #     return 'Ваша відповідь уже записана'
     
-    return render_template('results.html', resultsOfAsk=1)
+    # return render_template('results.html', resultsOfAsk=1)
+
+    poll_answers = [1, 5, 3, 4]  # Example data, replace this with your fetched data
+    labels = [f'Answer {i + 1}' for i in range(len(poll_answers))]  # Generate labels
+
+    # Pass the data, labels, and any other required variables to the HTML template
+    return render_template('results_cool.html', poll_answers=poll_answers, labels=labels)
+
     # if request.method == 'GET':
     #     return render_template('results.html', resultsOfAsk=1)
     # else:
@@ -145,7 +152,17 @@ def test_ask():
     pass
 #####
 
+@app.route('/poll_statistics/<poll_code>')
+def poll_statistics(poll_code):
+    # Fetch the poll answers and calculate the average score from SQLite3 based on the poll code
+    # Retrieve the names and poll code as needed
 
+    # Generate the chart data and labels based on the poll answers
+    poll_answers = [1, 5, 3, 4]  # Example data, replace this with your fetched data
+    labels = [f'Answer {i + 1}' for i in range(len(poll_answers))]  # Generate labels
+
+    # Pass the data, labels, and any other required variables to the HTML template
+    return render_template('results_cool.html', poll_answers=poll_answers, labels=labels)
 
 
 

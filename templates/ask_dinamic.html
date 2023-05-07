@@ -80,23 +80,4 @@
                         document.getElementById('volume'+buttonId).value=3;
                     } else if (keywords4.some(keyword => recognizedText.toLowerCase().includes(keyword.toLowerCase()))) {
                         // execute code for keywords4
-                        alert(`Ви сказали: ${recognizedText}`);
-                        document.getElementById('volume'+buttonId).value=4;
-                    } else if (keywords5.some(keyword => recognizedText.toLowerCase().includes(keyword.toLowerCase()))) {
-                        // execute code for keywords5
-                        alert(`Ви сказали: ${recognizedText}`);
-                        document.getElementById('volume'+buttonId).value=5;
-                    } else {
-                        alert(`Ви сказали: ${recognizedText}`);
-                        alert("Помилка, повторіть");
-                    }
-                };
-                recognition.onend = function() {
-
-                };
-                recognition.start();
-            }
-
-        </script>   
-    </body>
-</html>
+                        alert(`Ви сказали: ${reco<!DOCTYPE html>
