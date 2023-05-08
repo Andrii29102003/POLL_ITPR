@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_result.css') }}">
+    <title>Pie Charts</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="main-div">
+        <h2 class="headtext">РЕЗУЛЬТАТИ ОПИТУВАННЯ</h2>
+        {% for image, scores in data.items() %}
+            <div class="ask-div">
+                <img src="{{ urls[loop.index-1] }}" alt="Image">
+                <canvas id="diagram-{{ loop.index }}" class="diagram"></canvas>
+                <button type="button" class='mark-button' disabled="true">{{ avgMark[loop.index] }}</button>
+            </div>
+    
+            <script>
+                function drawDiagram(canvasId, data) {
+                    const canvas = document.getElementById(canvasId);
+                    const ctx = canvas.getContext("2d");
+                    const canvasWidth = canvas.width;
+                    const canvasHeight = canvas.height;
+    
+                    // Calculate the total sum of values
+                    const totalSum = Object.values(data).reduce((a, b) => a + b, 0);
+    
+                    // Calculate the width of each section based on the values
+                    const sectionWidths = {};
+                    for (const key in data) {
+                        const value = data[key];
+                        const widthPercentage = (value / totalSum) * 100;
+                        sectionWidths[key] = (canvasWidth * widthPercentage) / 100;
+                    }
+    
+                    // Set the colors for each section
+                    const sectionColors = {
+                        1: "red",
+                        2: "green",
+                        3: "blue",
+                        4: "yellow",
+                        5: "orange"
+                    };
+    
+                    // Draw the diagram sections
+                    let startX = 0;
+                    for (const key in sectionWidths) {
+                        const sectionWidth = sectionWidths[key];
+                        const sectionColor = sectionColors[key];
+    
+                        // Set the style for the section
+                        ctx.fillStyle = sectionColor;
+    
+                        // Draw the section
+                        ctx.fillRect(startX, 0, sectionWidth, canvasHeight);
+    
+                        startX += sectionWidth;
+                    }
+                }
+    
+                document.addEventListener("DOMContentLoaded", function() {
+                    const data = {{ scores }};
+                    drawDiagram("diagram-{{ loop.index }}", data);
+                });
+            </script>
+        {% endfor %}
+    </div>
+    
+        
+</body>
+</html>

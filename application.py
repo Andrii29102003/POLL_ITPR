@@ -157,7 +157,7 @@ def results(people_name):
 
     print(percentages_data)
     #return render_template('results_cool.html', data=scores_counted, passed_poll_times= passed_poll_times)
-    return render_template('test_results.html', data=scores_counted, passed_poll_times= passed_poll_times, urls= urls, avgMark=avgMark, percentages_data = percentages_data)
+    return render_template('test_results_copy.html', data=scores_counted, passed_poll_times= passed_poll_times, urls= urls, avgMark=avgMark, percentages_data = percentages_data)
 
     # if request.method == 'GET':
     #     return render_template('results.html', resultsOfAsk=1)
