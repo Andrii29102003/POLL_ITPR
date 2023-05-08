@@ -169,10 +169,10 @@
                 const data = {{ percentages_data }};
                 const canvasWidth = canvas.width;
                 const canvasHeight = canvas.height;
-    
+        
                 // Calculate the total sum of values
                 const totalSum = Object.values(data[4]).reduce((a, b) => a + b, 0);
-    
+        
                 // Calculate the width of each section based on the values
                 const sectionWidths = {};
                 for (const key in data[4]) {
@@ -180,7 +180,7 @@
                     const widthPercentage = (value / totalSum) * 100;
                     sectionWidths[key] = (canvasWidth * widthPercentage) / 100;
                 }
-    
+        
                 // Set the colors for each section
                 const sectionColors = {
                     1: "red",
@@ -189,23 +189,40 @@
                     4: "yellow",
                     5: "orange"
                 };
-    
+        
+                // Set the labels for each section
+                const sectionLabels = {
+                    1: "10%",
+                    2: "20%",
+                    3: "60%",
+                    4: "60%",
+                    5: "60%",
+                };
+        
                 // Draw the diagram sections
                 let startX = 0;
                 for (const key in sectionWidths) {
                     const sectionWidth = sectionWidths[key];
                     const sectionColor = sectionColors[key];
-    
+                    const sectionLabel = sectionLabels[key];
+        
                     // Set the style for the section
                     ctx.fillStyle = sectionColor;
-    
+        
                     // Draw the section
                     ctx.fillRect(startX, 0, sectionWidth, canvasHeight);
-    
+        
+                    // Add the label inside the section
+                    ctx.fillStyle = "white";
+                    ctx.font = "27px Arial";
+                    ctx.textAlign = "center";
+                    ctx.fillText(sectionLabel, startX + sectionWidth / 2, canvasHeight / 2 + 5);
+        
                     startX += sectionWidth;
                 }
             });
         </script>
+        
         <div class="ask-div">
             <img src="{{ urls[4] }}" alt="Image">
             <canvas id="diagram-4" class="diagram"></canvas>
