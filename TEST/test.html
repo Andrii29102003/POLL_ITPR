@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Лінійна діаграма</title>
+  <style>
+    .rectangle {
+        height: 50px;
+        background-color: blue;
+        margin-left: 0px;
+        text-align: center;
+    }
+    #diagram {
+        height: 50px;
+        width: auto;
+        display: flex;
+    }
+    </style>
+</head>
+<body>
+    <section id="diagram"></section>
+  
+  <script>
+    const sizes = {rect1: 50, rect2: 100, rect3: 150, rect4: 200, rect5: 250};
+    const diagram = document.getElementById("diagram");
+    for (let i = 1; i <= 5; i++) {
+        const rectangle = document.createElement("div");
+        rectangle.innerHTML = 'div';
+        rectangle.classList.add("rectangle");
+        rectangle.style.width = sizes["rect"+i] + "px";
+        diagram.appendChild(rectangle);
+    }
+  </script>
+</body>
+</html>
