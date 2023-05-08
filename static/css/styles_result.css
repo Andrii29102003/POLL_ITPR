@@ -105,3 +105,21 @@ IMG STYLE
 img {
     width: 300px;
 }
+
+/*######################
+DIAGRAM STYLE
+######################*/
+
+.rectangle {
+    height: 50px;
+    background-color: blue;
+    margin-left: 0px;
+    text-align: center;
+}
+.diagram {
+    max-width: 400px;
+    height: 50px;
+    width: auto;
+    display: flex;
+    margin: 10px;
+}

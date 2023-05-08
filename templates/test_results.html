@@ -12,35 +12,24 @@
         {% for image, scores in data.items() %}
             <div class="ask-div">
                 <img src="{{ urls[image-1] }}" alt="Image">
-                <input type="range" id="volume{{ loop.index + 1}}" name="volume{{ loop.index + 1}}" min="1" max="5">
+                <section id="diagram{{image}}" class="diagram"></section>
+                <script>
+                    const sizes = {rect1: 50, rect2: 100, rect3: 150, rect4: 200, rect5: 250};
+                    const diagram = document.getElementById("diagram{{image}}");
+                    for (let i = 1; i <= 5; i++) {
+                        const rectangle = document.createElement("div");
+                        rectangle.innerHTML = 'div';
+                        rectangle.classList.add("rectangle");
+                        rectangle.style.width = sizes["rect"+i] + "px";
+                        diagram.appendChild(rectangle);
+                    }
+                </script>
                 <button type="button" class='mark-button' disabled="true">{{avgMark[image-1]}}</button>
               
             </div>
         {% endfor %}
     </div>
 
-        <script>
-            var canvas = document.getElementById('chart{{ image }}');
-            var ctx = canvas.getContext('2d');
-            var width = canvas.width;
-            var height = canvas.height;
-            var aspectRatio = width / height;
-            
-            new Chart(ctx, {
-                type: 'pie',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        data: values,
-                        backgroundColor: ['red', 'blue', 'green', 'yellow', 'orange'],
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    aspectRatio: aspectRatio
-                }
-            });
-        </script>
+        
 </body>
 </html>
