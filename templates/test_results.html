@@ -15,9 +15,9 @@
                 <section id="diagram{{image}}" class="diagram"></section>
                 <script>
                     const sizes = {rect1: 50, rect2: 100, rect3: 150, rect4: 200, rect5: 250};
-                    const diagram = document.getElementById("diagram{{image}}");
+                    let diagram = document.getElementById("diagram{{image}}");
                     for (let i = 1; i <= 5; i++) {
-                        const rectangle = document.createElement("div");
+                        let rectangle = document.createElement("div");
                         rectangle.innerHTML = 'div';
                         rectangle.classList.add("rectangle");
                         rectangle.style.width = sizes["rect"+i] + "px";
