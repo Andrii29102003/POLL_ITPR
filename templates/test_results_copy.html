@@ -28,33 +28,43 @@
     
                     // Calculate the width of each section based on the values
                     const sectionWidths = {};
+                    const sectionLabels = {};
                     for (const key in data) {
                         const value = data[key];
                         const widthPercentage = (value / totalSum) * 100;
                         sectionWidths[key] = (canvasWidth * widthPercentage) / 100;
+                        sectionLabels[key] = value + '%';
                     }
     
                     // Set the colors for each section
                     const sectionColors = {
-                        1: "red",
-                        2: "green",
-                        3: "blue",
-                        4: "yellow",
-                        5: "orange"
+                        1: "#ADB5BD",
+                        2: "#6C757D",
+                        3: "#495057",
+                        4: "#343A40",
+                        5: "#212529"
                     };
-    
+
+            
                     // Draw the diagram sections
                     let startX = 0;
                     for (const key in sectionWidths) {
                         const sectionWidth = sectionWidths[key];
                         const sectionColor = sectionColors[key];
-    
+                        const sectionLabel = sectionLabels[key];
+            
                         // Set the style for the section
                         ctx.fillStyle = sectionColor;
-    
+            
                         // Draw the section
                         ctx.fillRect(startX, 0, sectionWidth, canvasHeight);
-    
+            
+                        // Add the label inside the section
+                        ctx.fillStyle = "white";
+                        ctx.font = "30px Arial";
+                        ctx.textAlign = "center";
+                        ctx.fillText(sectionLabel, startX + sectionWidth / 2, canvasHeight / 2 + 5);
+            
                         startX += sectionWidth;
                     }
                 }
