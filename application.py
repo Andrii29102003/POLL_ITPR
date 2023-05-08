@@ -138,19 +138,26 @@ def results(people_name):
         return f'Немає такого опитування як {passw}, перевірте коректність, або Адміністратор вже видалив його'
 
     count=0
-    sum=0
+    sum_a=0
     avgMark=[]
     for key, value in scores_counted.items():
         for key, mark in value.items():
-            sum+=key*mark
+            sum_a+=key*mark
             count+=mark
-            avgMark.append(round(sum/count, 1))
+            avgMark.append(round(sum_a/count, 1))
     
     print(avgMark)#DEL
-        
+    print(scores_counted)
+    # data = scores_counted
+    percentages_data = {}
+    for key, inner_data in scores_counted.items():
+        total_sum = sum(inner_data.values())
+        percentages = {inner_key: int((value / total_sum) * 100) for inner_key, value in inner_data.items()}
+        percentages_data[key] = percentages
 
+    print(percentages_data)
     #return render_template('results_cool.html', data=scores_counted, passed_poll_times= passed_poll_times)
-    return render_template('test_results.html', data=scores_counted, passed_poll_times= passed_poll_times, urls= urls, avgMark=avgMark)
+    return render_template('test_results.html', data=scores_counted, passed_poll_times= passed_poll_times, urls= urls, avgMark=avgMark, percentages_data = percentages_data)
 
     # if request.method == 'GET':
     #     return render_template('results.html', resultsOfAsk=1)
@@ -197,4 +204,4 @@ def test_ask():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5001)

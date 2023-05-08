@@ -9,26 +9,255 @@
 
     <div class="main-div">
         <h2 class="headtext">РЕЗУЛЬТАТИ ОПИТУВАННЯ</h2>
-        {% for image, scores in data.items() %}
-            <div class="ask-div">
-                <img src="{{ urls[image-1] }}" alt="Image">
-                <section id="diagram{{image}}" class="diagram"></section>
-                <script>
-                    const sizes = {rect1: 50, rect2: 100, rect3: 150, rect4: 200, rect5: 250};
-                    let diagram = document.getElementById("diagram{{image}}");
-                    for (let i = 1; i <= 5; i++) {
-                        let rectangle = document.createElement("div");
-                        rectangle.innerHTML = 'div';
-                        rectangle.classList.add("rectangle");
-                        rectangle.style.width = sizes["rect"+i] + "px";
-                        diagram.appendChild(rectangle);
-                    }
-                </script>
-                <button type="button" class='mark-button' disabled="true">{{avgMark[image-1]}}</button>
-              
-            </div>
-        {% endfor %}
+        <div class="ask-div">
+            <img src="{{ urls[0] }}" alt="Image">
+            <canvas id="diagram-0" class="diagram"></canvas>
+            <button type="button" class='mark-button' disabled="true">{{avgMark[0]}}</button>
+        </div>
+    
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const canvas = document.getElementById("diagram-0");
+                const ctx = canvas.getContext("2d");
+                const data = {{ percentages_data }};
+                const canvasWidth = canvas.width;
+                const canvasHeight = canvas.height;
+    
+                // Calculate the total sum of values
+                const totalSum = Object.values(data[1]).reduce((a, b) => a + b, 0);
+    
+                // Calculate the width of each section based on the values
+                const sectionWidths = {};
+                for (const key in data[1]) {
+                    const value = data[1][key];
+                    const widthPercentage = (value / totalSum) * 100;
+                    sectionWidths[key] = (canvasWidth * widthPercentage) / 100;
+                }
+    
+                // Set the colors for each section
+                const sectionColors = {
+                    1: "red",
+                    2: "green",
+                    3: "blue",
+                    4: "yellow",
+                    5: "orange"
+                };
+    
+                // Draw the diagram sections
+                let startX = 0;
+                for (const key in sectionWidths) {
+                    const sectionWidth = sectionWidths[key];
+                    const sectionColor = sectionColors[key];
+    
+                    // Set the style for the section
+                    ctx.fillStyle = sectionColor;
+    
+                    // Draw the section
+                    ctx.fillRect(startX, 0, sectionWidth, canvasHeight);
+    
+                    startX += sectionWidth;
+                }
+            });
+        </script>
+        <div class="ask-div">
+            <img src="{{ urls[1] }}" alt="Image">
+            <canvas id="diagram-1" class="diagram"></canvas>
+            <button type="button" class='mark-button' disabled="true">{{avgMark[1]}}</button>
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const canvas = document.getElementById("diagram-1");
+                const ctx = canvas.getContext("2d");
+                const data = {{ percentages_data }};
+                const canvasWidth = canvas.width;
+                const canvasHeight = canvas.height;
+    
+                // Calculate the total sum of values
+                const totalSum = Object.values(data[2]).reduce((a, b) => a + b, 0);
+    
+                // Calculate the width of each section based on the values
+                const sectionWidths = {};
+                for (const key in data[2]) {
+                    const value = data[2][key];
+                    const widthPercentage = (value / totalSum) * 100;
+                    sectionWidths[key] = (canvasWidth * widthPercentage) / 100;
+                }
+    
+                // Set the colors for each section
+                const sectionColors = {
+                    1: "red",
+                    2: "green",
+                    3: "blue",
+                    4: "yellow",
+                    5: "orange"
+                };
+    
+                // Draw the diagram sections
+                let startX = 0;
+                for (const key in sectionWidths) {
+                    const sectionWidth = sectionWidths[key];
+                    const sectionColor = sectionColors[key];
+    
+                    // Set the style for the section
+                    ctx.fillStyle = sectionColor;
+    
+                    // Draw the section
+                    ctx.fillRect(startX, 0, sectionWidth, canvasHeight);
+    
+                    startX += sectionWidth;
+                }
+            });
+        </script>
+        <div class="ask-div">
+            <img src="{{ urls[2] }}" alt="Image">
+            <canvas id="diagram-2" class="diagram"></canvas>
+            <button type="button" class='mark-button' disabled="true">{{avgMark[2]}}</button>
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const canvas = document.getElementById("diagram-2");
+                const ctx = canvas.getContext("2d");
+                const data = {{ percentages_data }};
+                const canvasWidth = canvas.width;
+                const canvasHeight = canvas.height;
+    
+                // Calculate the total sum of values
+                const totalSum = Object.values(data[3]).reduce((a, b) => a + b, 0);
+    
+                // Calculate the width of each section based on the values
+                const sectionWidths = {};
+                for (const key in data[3]) {
+                    const value = data[3][key];
+                    const widthPercentage = (value / totalSum) * 100;
+                    sectionWidths[key] = (canvasWidth * widthPercentage) / 100;
+                }
+    
+                // Set the colors for each section
+                const sectionColors = {
+                    1: "red",
+                    2: "green",
+                    3: "blue",
+                    4: "yellow",
+                    5: "orange"
+                };
+    
+                // Draw the diagram sections
+                let startX = 0;
+                for (const key in sectionWidths) {
+                    const sectionWidth = sectionWidths[key];
+                    const sectionColor = sectionColors[key];
+    
+                    // Set the style for the section
+                    ctx.fillStyle = sectionColor;
+    
+                    // Draw the section
+                    ctx.fillRect(startX, 0, sectionWidth, canvasHeight);
+    
+                    startX += sectionWidth;
+                }
+            });
+        </script>
+        <div class="ask-div">
+            <img src="{{ urls[3] }}" alt="Image">
+            <canvas id="diagram-3" class="diagram"></canvas>
+            <button type="button" class='mark-button' disabled="true">{{avgMark[3]}}</button>
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const canvas = document.getElementById("diagram-3");
+                const ctx = canvas.getContext("2d");
+                const data = {{ percentages_data }};
+                const canvasWidth = canvas.width;
+                const canvasHeight = canvas.height;
+    
+                // Calculate the total sum of values
+                const totalSum = Object.values(data[4]).reduce((a, b) => a + b, 0);
+    
+                // Calculate the width of each section based on the values
+                const sectionWidths = {};
+                for (const key in data[4]) {
+                    const value = data[4][key];
+                    const widthPercentage = (value / totalSum) * 100;
+                    sectionWidths[key] = (canvasWidth * widthPercentage) / 100;
+                }
+    
+                // Set the colors for each section
+                const sectionColors = {
+                    1: "red",
+                    2: "green",
+                    3: "blue",
+                    4: "yellow",
+                    5: "orange"
+                };
+    
+                // Draw the diagram sections
+                let startX = 0;
+                for (const key in sectionWidths) {
+                    const sectionWidth = sectionWidths[key];
+                    const sectionColor = sectionColors[key];
+    
+                    // Set the style for the section
+                    ctx.fillStyle = sectionColor;
+    
+                    // Draw the section
+                    ctx.fillRect(startX, 0, sectionWidth, canvasHeight);
+    
+                    startX += sectionWidth;
+                }
+            });
+        </script>
+        <div class="ask-div">
+            <img src="{{ urls[4] }}" alt="Image">
+            <canvas id="diagram-4" class="diagram"></canvas>
+            <button type="button" class='mark-button' disabled="true">{{avgMark[4]}}</button>
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const canvas = document.getElementById("diagram-4");
+                const ctx = canvas.getContext("2d");
+                const data = {{ percentages_data }};
+                const canvasWidth = canvas.width;
+                const canvasHeight = canvas.height;
+    
+                // Calculate the total sum of values
+                const totalSum = Object.values(data[5]).reduce((a, b) => a + b, 0);
+    
+                // Calculate the width of each section based on the values
+                const sectionWidths = {};
+                for (const key in data[5]) {
+                    const value = data[5][key];
+                    const widthPercentage = (value / totalSum) * 100;
+                    sectionWidths[key] = (canvasWidth * widthPercentage) / 100;
+                }
+    
+                // Set the colors for each section
+                const sectionColors = {
+                    1: "red",
+                    2: "green",
+                    3: "blue",
+                    4: "yellow",
+                    5: "orange"
+                };
+    
+                // Draw the diagram sections
+                let startX = 0;
+                for (const key in sectionWidths) {
+                    const sectionWidth = sectionWidths[key];
+                    const sectionColor = sectionColors[key];
+    
+                    // Set the style for the section
+                    ctx.fillStyle = sectionColor;
+    
+                    // Draw the section
+                    ctx.fillRect(startX, 0, sectionWidth, canvasHeight);
+    
+                    startX += sectionWidth;
+                }
+            });
+        </script>
     </div>
+    
+    
 
         
 </body>
