@@ -13,7 +13,7 @@
         <h1>ID: {{id}}</h1>
         <h1>КОД ДЛЯ ПРОХОДЖЕННЯ: {{passw}} ЗБЕРЕЖІТЬ ПЕРЕД СТВОРЕННЯМ</h1>
         <h1>КОД ДЛЯ ВИДАЛЕННЯ: {{del_passw}} ЗБЕРЕЖІТЬ ПЕРЕД СТВОРЕННЯМ</h1>
-        <form method="POST" action="{{ url_for('create') }}">
+        <form method="POST" action="{{ url_for('create2', passw=passw, del_passw=del_passw) }}">
             <input type="text" name="link1"> <hr>
             <input type="text" name="link2"> <hr>
             <input type="text" name="link3"> <hr>

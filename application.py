@@ -39,7 +39,7 @@ def close_db(exception):
 def index():
     db = get_db()
     _ = [db.execute_query(query) for query in create_db_tables]
-    
+    print(_)
     if request.method == "POST":
         request_values = [request.values["username"], request.values["ask_id"]]
         print("REQUEST VALUES =", request_values)
@@ -66,24 +66,37 @@ def ask():
 
 
 # TO DO
-@app.route('/create', methods=['POST', 'GET'])
+    
+
+@app.route('/create', methods=['GET'])
 def create():
-    passw = generate_password(10)
-    del_passw=str(random.randint(11111, 999999))
+    if request.method == 'GET': 
+        passw = generate_password(10)
+        del_passw=str(random.randint(11111, 999999))
+        # key = generate_password(5)
+        # session[key] = (passw, del_passw)
     #id=dblite.new(passw=passw)
-    db = get_db()
+        db = get_db()
     # result = db.execute_query("SELECT * FROM poll_data")
-    id=len(db.execute_query("SELECT * FROM poll_data")) + 1
-    if request.method == "POST":
+        id=len(db.execute_query("SELECT * FROM poll_data")) + 1
+        print('frist passw ', passw)
+        return render_template('create.html', id=id, passw=passw, del_passw=del_passw)
+
+@app.route('/create2/<passw>/<del_passw>', methods=['POST'])
+def create2(passw, del_passw):
+    
+    print('second passw ', passw, del_passw)
+
+    if request.method == 'POST': 
         links = 5 
         str_links = ['link' + str(i) for i in range(1, links+1)]
         url_links = [request.values[str_link] for str_link in str_links]
         
-        print(url_links)
+        # print(url_links)
+        db = get_db()
         db.execute_query(new_poll_query, (passw, del_passw, json.dumps(url_links)))
         return render_template("index.html")
     
-    return render_template('create.html', id=id, passw=passw, del_passw=del_passw)
 
 @app.route('/results/<people_name>', methods=["GET", 'POST'])
 def results(people_name):
