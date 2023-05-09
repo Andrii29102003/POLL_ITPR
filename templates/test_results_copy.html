@@ -92,6 +92,50 @@
       // Update the HTML element with the score count
       document.getElementById('scoreCount').textContent = sum;
     </script>
+
+    <div id="colorIndication1">
+        <!-- Color indications will be dynamically added here -->
+      </div>
+      
+      <script>
+        const sectionColors = {
+          1: "#ADB5BD",
+          2: "#6C757D",
+          3: "#495057",
+          4: "#343A40",
+          5: "#212529"
+        };
+      
+        // Get the container element to append color indications
+        const colorContainer = document.getElementById("colorIndication");
+      
+        // Loop through the sectionColors object and create color indications
+        for (const section in sectionColors) {
+          const color = sectionColors[section];
+          if section == 1{
+            const label = `${section} Бал`;}
+          else if section == 2 || ection == 3 || ection == 4{
+            const label = `${section} Бали`;}
+          else if section == 5 { 
+            const label = `${section} Балів`;}
+          else {console.log(1);}
+          // Create a color indication box with label
+          const colorBox = document.createElement("div");
+          colorBox.style.backgroundColor = color;
+          colorBox.style.width = "20px";
+          colorBox.style.height = "20px";
+          colorBox.style.display = "inline-block";
+          colorBox.style.marginRight = "10px";
+      
+          const colorLabel = document.createElement("span");
+          colorLabel.textContent = label;
+      
+          // Append the color indication to the container
+          colorContainer.appendChild(colorBox);
+          colorContainer.appendChild(colorLabel);
+        }
+      </script>
+      
     
         
 </body>
