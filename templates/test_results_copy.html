@@ -19,7 +19,7 @@
             <script>
                 function drawDiagram(canvasId, data) {
                     const canvas = document.getElementById(canvasId);
-                    const ctx = canvas.getContext("2d");
+                    //const ctx = canvas.getContext("2d");
                     const canvasWidth = canvas.width;
                     const canvasHeight = canvas.height;
     
@@ -47,25 +47,34 @@
 
             
                     // Draw the diagram sections
-                    let startX = 0;
+                    //let startX = 0;
                     for (const key in sectionWidths) {
                         const sectionWidth = sectionWidths[key];
                         const sectionColor = sectionColors[key];
                         const sectionLabel = sectionLabels[key];
             
                         // Set the style for the section
-                        ctx.fillStyle = sectionColor;
+                        //ctx.fillStyle = sectionColor;
             
                         // Draw the section
-                        ctx.fillRect(startX, 0, sectionWidth, canvasHeight);
+
+                        const rectangle = document.createElement("div");
+                        rectangle.innerHTML = sectionLabel;
+                        rectangle.classList.add("rectangle");
+                        rectangle.style.width = sectionWidth + "px";
+                        rectangle.style.backgroundColor = sectionColor;
+                        diagram.appendChild(rectangle);
+
+
+                        //ctx.fillRect(startX, 0, sectionWidth, canvasHeight);
             
                         // Add the label inside the section
-                        ctx.fillStyle = "white";
-                        ctx.font = "30px Arial";
-                        ctx.textAlign = "center";
-                        ctx.fillText(sectionLabel, startX + sectionWidth / 2, canvasHeight / 2 + 5);
+                        // ctx.fillStyle = "white";
+                        // ctx.font = "30px Arial";
+                        // ctx.textAlign = "center";
+                        // ctx.fillText(sectionLabel, startX + sectionWidth / 2, canvasHeight / 2 + 5);
             
-                        startX += sectionWidth;
+                        //startX += sectionWidth;
                     }
                 }
     
