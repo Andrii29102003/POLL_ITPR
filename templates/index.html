@@ -1,32 +1,23 @@
-<!DOCTYPE html>
-<html lang="uk">
-    <head>
-        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
-        <link href="{{ url_for('static', filename='css/styles_create.css') }}" type='text/css' rel="stylesheet">
-        <meta charset="utf-8">
-        <title>Головна</title>
-    </head>
+{% extends 'base_join_create.html' %}
+{% block title %}
+	<title>Join Poll</title>
+{% endblock %}
 
-    <body>
-        <div class="login">
-            <h1 class="active texto_center">ПРОЙТИ ОПИТУВАННЯ</h1>
-            <!--hr>
-            <h2 class="active">Пройти</h2>
-            <h2 class="nonactive">Створити</h2-->
-
-
-            <form method="POST" action="/take_poll">
-                <input type="text" class="text" name="username">
-                <span>Ім'я користувача</span>
-                <br><br>
+{% block content %}
+    <div class="join_poll_back">
+        <h1 class="active texto_center">ПРОЙТИ ОПИТУВАННЯ</h1>
+        <form method="POST" action="/take_poll">
+            <input type="text" class="text" name="username">
+            <span>Ім'я користувача</span>
+            <br><br>
             
-                <input type="text" class="text" name="ask_id">
-                <span>Код опитування</span>
-                <button class="signin" type="submit">Пройти опитування</button>
-                <hr>
-            </form>
+            <input type="text" class="text" name="ask_id">
+            <span>Код опитування</span>
+            <button class="signin" type="submit">Пройти опитування</button>
+            <hr>
+        </form>
 
-            <a class="texto_to_create" href="{{url_for('create')}}">Не маєте опитування? Створити.</a>
-        </div>
-    </body>
-</html>
+        <a class="texto_to_create" href="{{url_for('create')}}">Не маєте опитування? Створити.</a>
+    </div>
+
+{% endblock %}

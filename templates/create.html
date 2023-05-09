@@ -1,28 +1,33 @@
-<!DOCTYPE html>
-<html lang="uk">
-    <head>
-        <!--<link rel="stylesheet" href="styles.css">-->
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-        <meta charset="utf-8">
-        <title>
-            Створити
-        </title>
-    </head>
-    <body>
-        <h1>СТВОРИТИ ОПИТУВАННЯ</h1>
+{% extends 'base_join_create.html' %}
+{% block title %}
+	<title>Create Poll</title>
+{% endblock %}
+
+{% block content %}
+    <div class="create_poll_back">
+        <h1 class="active texto_center">СТВОРЕННЯ ОПИТУВАННЯ</h1>
+
+        <!-- //-- VlaGan: якщо це потрібно при створенні, я стилі потім піджену
+            //-- але я думаю, що краще б це показувати на окремій сторінці вже потім
+            //-- після створення, наприклад, на другу перекидати
+        -->
+        <!--h1>СТВОРИТИ ОПИТУВАННЯ</h1>
         <h1>ID: {{id}}</h1>
         <h1>КОД ДЛЯ ПРОХОДЖЕННЯ: {{passw}} ЗБЕРЕЖІТЬ ПЕРЕД СТВОРЕННЯМ</h1>
-        <h1>КОД ДЛЯ ВИДАЛЕННЯ: {{del_passw}} ЗБЕРЕЖІТЬ ПЕРЕД СТВОРЕННЯМ</h1>
-        <form method="POST" action="{{ url_for('create2', passw=passw, del_passw=del_passw) }}">
-            <input type="text" name="link1"> <hr>
-            <input type="text" name="link2"> <hr>
-            <input type="text" name="link3"> <hr>
-            <input type="text" name="link4"> <hr>
-            <input type="text" name="link5"> <hr>
-            <input type="submit" value="Створити опитування">
+
+        <h1>КОД ДЛЯ ВИДАЛЕННЯ: {{del_passw}} ЗБЕРЕЖІТЬ ПЕРЕД СТВОРЕННЯМ</h1-->
+
+        <form method="POST" action="{{ url_for('create') }}" >
+            {% for i in range(5) %}
+                <input type="text" class="text" name="link{{i+1}}">
+                <span>Посилання №{{ i+1 }}</span>
+                <br>
+            {% endfor%}
+            <input class="signin" type="submit" value="Створити опитування">
+            <hr>
         </form>
-    
 
-    </body>
+        <a class="texto_to_create" href="{{url_for('index')}}">Вже маєте опитування? Долучитись.</a>
+    </div>
 
-</html>
+{% endblock%}
