@@ -181,4 +181,26 @@ a {
 .texto_center{
   text-align: center;
 }
+
+.texto_to_create{
+  text-align: center;
+  color: gray;
+  font-size: 15px;
+
+  transition: 0.5s linear;
+  border: none;
+  display: block;
+  background:rgba(255, 255, 255, 0);
+}
+
+.texto_to_create:hover{
+  color: white;
+  /*box-shadow: 0px 4px 25px -5px white;*/
+  border: none;
+  cursor: pointer;
+}
+
+.texto_to_create:focus {
+  outline: none;
+}
 /*/////////////////////////////////////////////////////////////////////*/

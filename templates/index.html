@@ -9,10 +9,10 @@
 
     <body>
         <div class="login">
-            <h1 class="nonactive texto_center">Опитування</h1>
-            <hr>
+            <h1 class="active texto_center">ПРОЙТИ ОПИТУВАННЯ</h1>
+            <!--hr>
             <h2 class="active">Пройти</h2>
-            <h2 class="nonactive">Створити</h2>
+            <h2 class="nonactive">Створити</h2-->
 
 
             <form method="POST" action="/take_poll">
@@ -22,14 +22,11 @@
             
                 <input type="text" class="text" name="ask_id">
                 <span>Код опитування</span>
-                <br><br>
-            
-                <!--<input type="checkbox" id="checkbox-1-1" class="custom-checkbox" name="is_create"/>
-                <label for="checkbox-1-1">Is Login to Ask</label> -->
                 <button class="signin" type="submit">Пройти опитування</button>
                 <hr>
             </form>
-            
+
+            <a class="texto_to_create" href="{{url_for('create')}}">Не маєте опитування? Створити.</a>
         </div>
     </body>
 </html>
