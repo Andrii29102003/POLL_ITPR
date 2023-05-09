@@ -17,7 +17,7 @@
 
         <h1>КОД ДЛЯ ВИДАЛЕННЯ: {{del_passw}} ЗБЕРЕЖІТЬ ПЕРЕД СТВОРЕННЯМ</h1-->
 
-        <form method="POST" action="{{ url_for('create') }}" >
+        <form method="POST" action="{{ url_for('create2', passw=passw, del_passw=del_passw) }}" >
             {% for i in range(5) %}
                 <input type="text" class="text" name="link{{i+1}}">
                 <span>Посилання №{{ i+1 }}</span>
