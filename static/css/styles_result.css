@@ -119,7 +119,7 @@ DIAGRAM STYLE
 .diagram {
     max-width: 400px;
     height: 50px;
-    width: auto;
+    width: 300px;
     display: flex;
     margin: 10px;
 }
