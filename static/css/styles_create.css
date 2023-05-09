@@ -9,7 +9,9 @@ body, .signin {
   letter-spacing: 1px;
 }
 
-.login {
+/* Тут краще розділити в різні, бо якщо розтягувати, то на джоіні фон занадто тягнеться*/
+/*/////////////////////////////////////////////////////////////////////*/
+.create_poll_back {
   position: relative;
   height: 105vh;/*560px;*/ /* //-- VlaGan: це розтягування форми по полі зору юзера */
   width: 405px;
@@ -19,6 +21,18 @@ body, .signin {
   background-size: cover;
   box-shadow: 0px 30px 60px -5px #000;
 }
+
+.join_poll_back{
+  position: relative;
+  height: 560px;
+  width: 405px;
+  margin: auto;
+  padding: 60px 60px;
+  background: url(https://picsum.photos/id/1004/5616/3744) no-repeat   center center #505050;
+  background-size: cover;
+  box-shadow: 0px 30px 60px -5px #000;
+}
+/*/////////////////////////////////////////////////////////////////////*/
 
 form {
   padding-top: 80px;

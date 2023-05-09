@@ -1,0 +1,21 @@
+<!-- 
+    ///////////////////////////////////////////////////////////////////
+    //-- VlaGan: шаблонна сторінка з інклудами стилів для create/index,
+    //-- так можна зробити ще верхню панель навігації по сайту, щоб не 
+    //-- вписувати в кожен файл
+    ///////////////////////////////////////////////////////////////////
+-->
+
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+        <link href="{{ url_for('static', filename='css/styles_create.css') }}" type='text/css' rel="stylesheet">
+        <meta charset="utf-8">
+        {% block title %}{% endblock %}
+    </head>
+
+    <body>
+        {% block content %}{% endblock %}
+    </body>
+</html>
