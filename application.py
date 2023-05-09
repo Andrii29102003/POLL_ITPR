@@ -92,7 +92,7 @@ def results(people_name):
         # return render_template("index.html")
 
 
-    print('name ', people_name)
+    # print('name ', people_name)
     # Get the values of the input ranges from the form
     input_values =  []
     #cab  pass how many links
@@ -110,7 +110,7 @@ def results(people_name):
         # return 'Ваша відповідь уже записана' #TO DO добавити сторінку де можна буде перейти зразу до результатів
     
     result = db.execute_query(get_poll_answ,(passw,))
-    print(result)
+    # print(result)
     
     scores = {}
     for i in range(len(json.loads(result[0][1]))):
@@ -126,11 +126,11 @@ def results(people_name):
         scores_counted[key] = dict(Counter(values))
 
             
-    print(scores_counted)
+    # print(scores_counted)
     passed_poll_times = len(result)
     
     result = db.execute_query(get_link_by_passw,(passw,))
-    print(result, type(result))
+    # print(result, type(result))
     
     try: 
         urls = json.loads(result[0][0])
@@ -146,8 +146,8 @@ def results(people_name):
             count+=mark
             avgMark.append(round(sum_a/count, 1))
     
-    print(avgMark)#DEL
-    print(scores_counted)
+    # print(avgMark)#DEL
+    # print(scores_counted)
     # data = scores_counted
     percentages_data = {}
     for key, inner_data in scores_counted.items():

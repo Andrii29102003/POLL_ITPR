@@ -18,14 +18,14 @@
             {% for url in urls %}
             <div class="ask-div">
                 <img src="{{ url }}" alt="Image">
-              <input type="range" id="volume{{ loop.index + 1}}" name="volume{{ loop.index + 1}}" min="1" max="5">
-                  <button id="recordButton{{ loop.index + 1}}" type="button" class = 'record-button'>Голосом</button>
+              <input type="range" id="volume{{loop.index}}" name="volume{{ loop.index}}" min="1" max="5">
+                  <button id="recordButton{{loop.index}}" type="button" class = 'record-button'>Голосом</button>
             </div>
             {% endfor %}
 
         <!-- Відправити -->
         <div name="ask-div">
-        <input type="submit" id="submit" name="submit" >
+        <input type="submit" id="submit" name="Відправити відповідь" >
         </div>
         </form>
         </div>
