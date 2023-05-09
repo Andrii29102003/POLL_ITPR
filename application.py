@@ -101,23 +101,24 @@ def create2(passw, del_passw):
 @app.route('/results/<people_name>', methods=["GET", 'POST'])
 def results(people_name):
     if request.method == 'GET': 
-        pass
-        # return render_template("index.html")
+        return render_template("index.html")
 
 
     # print('name ', people_name)
     # Get the values of the input ranges from the form
     input_values =  []
     #cab  pass how many links
-    for url in range(2,7):
+    for url in range(1,6):
         input_name = 'volume' + str(url)
+        # print('volume: ', input_name)
         input_value = request.form.get(input_name)
         input_values.append(input_value)
+    print(input_values)
     db = get_db()
     passw = session.get(people_name)
     try: 
+        print(json.dumps(input_values))
         db.execute_query(save_poll_result,(passw, people_name, json.dumps(input_values)))
-        time_answ_save = time.time()
     except: 
         pass
         # return 'Ваша відповідь уже записана' #TO DO добавити сторінку де можна буде перейти зразу до результатів
@@ -126,6 +127,7 @@ def results(people_name):
     # print(result)
     
     scores = {}
+    print(result)
     for i in range(len(json.loads(result[0][1]))):
         i = i+1
         scores[i] = []
