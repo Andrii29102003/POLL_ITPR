@@ -118,7 +118,7 @@ DIAGRAM STYLE
 .diagram {
     max-width: 400px;
     height: 50px;
-    width: 300px;
+    width: 400px;
     display: flex;
     margin: 10px;
 }
