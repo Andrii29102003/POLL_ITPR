@@ -76,6 +76,22 @@
             </script>
         {% endfor %}
     </div>
+    <h3 class="headtext">Кількість проходжень опитування: <span id="scoreCount"></span></h3>
+
+    <script>
+      // Assuming `scores` is an array
+      var scores = {{data}}
+      console.log(scores)
+      var values = scores[1]; // Select the values of scores[1]
+      var sum = 0;
+      for (var key in values) {
+        sum += values[key];
+      }
+      console.log(sum)
+    
+      // Update the HTML element with the score count
+      document.getElementById('scoreCount').textContent = sum;
+    </script>
     
         
 </body>
