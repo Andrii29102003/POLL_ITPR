@@ -112,14 +112,13 @@ DIAGRAM STYLE
 
 .rectangle {
     height: 50px;
-    background-color: blue;
     margin-left: 0px;
     text-align: center;
 }
 .diagram {
     max-width: 400px;
     height: 50px;
-    width: auto;
+    width: 400px;
     display: flex;
     margin: 10px;
 }
