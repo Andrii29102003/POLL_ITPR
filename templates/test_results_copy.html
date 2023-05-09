@@ -12,16 +12,17 @@
         {% for image, scores in data.items() %}
             <div class="ask-div">
                 <img src="{{ urls[loop.index-1] }}" alt="Image">
-                <canvas id="diagram-{{ loop.index }}" class="diagram"></canvas>
+                <section id="diagram-{{ loop.index }}" class="diagram"></section>
                 <button type="button" class='mark-button' disabled="true">{{ avgMark[loop.index] }}</button>
             </div>
     
             <script>
                 function drawDiagram(canvasId, data) {
-                    const canvas = document.getElementById(canvasId);
-                    //const ctx = canvas.getContext("2d");
-                    const canvasWidth = canvas.width;
-                    const canvasHeight = canvas.height;
+                    const diagram = document.getElementById(canvasId);
+                    // const canvasWidth = diagram.width;
+                    // const canvasHeight = diagram.height;
+                    const canvasWidth = 300;
+                    const canvasHeight = 50;
     
                     // Calculate the total sum of values
                     const totalSum = Object.values(data).reduce((a, b) => a + b, 0);
@@ -47,34 +48,18 @@
 
             
                     // Draw the diagram sections
-                    //let startX = 0;
                     for (const key in sectionWidths) {
                         const sectionWidth = sectionWidths[key];
                         const sectionColor = sectionColors[key];
                         const sectionLabel = sectionLabels[key];
-            
-                        // Set the style for the section
-                        //ctx.fillStyle = sectionColor;
-            
-                        // Draw the section
 
                         const rectangle = document.createElement("div");
                         rectangle.innerHTML = sectionLabel;
                         rectangle.classList.add("rectangle");
-                        rectangle.style.width = sectionWidth + "px";
+                        rectangle.style.width = sectionWidth+"px";
                         rectangle.style.backgroundColor = sectionColor;
                         diagram.appendChild(rectangle);
 
-
-                        //ctx.fillRect(startX, 0, sectionWidth, canvasHeight);
-            
-                        // Add the label inside the section
-                        // ctx.fillStyle = "white";
-                        // ctx.font = "30px Arial";
-                        // ctx.textAlign = "center";
-                        // ctx.fillText(sectionLabel, startX + sectionWidth / 2, canvasHeight / 2 + 5);
-            
-                        //startX += sectionWidth;
                     }
                 }
     
