@@ -17,7 +17,7 @@
             </div>
     
             <script>
-                function drawDiagram(canvasId, data) {
+                function drawDiagram(canvasId, data, percentages_data, loopIndex) {
                     const diagram = document.getElementById(canvasId);
                     // const canvasWidth = diagram.width;
                     // const canvasHeight = diagram.height;
@@ -29,12 +29,17 @@
     
                     // Calculate the width of each section based on the values
                     const sectionWidths = {};
-                    const sectionLabels = {};
                     for (const key in data) {
                         const value = data[key];
                         const widthPercentage = (value / totalSum) * 100;
                         sectionWidths[key] = (canvasWidth * widthPercentage) / 100;
-                        sectionLabels[key] = value + '%';
+                    }
+
+                    const sectionLabels = {};
+                    var perc_data = percentages_data[loopIndex];
+                    for (const key in perc_data) {
+                        const value = perc_data[key] + '%';
+                        sectionLabels[key] = value;
                     }
     
                     // Set the colors for each section
@@ -64,7 +69,9 @@
     
                 document.addEventListener("DOMContentLoaded", function() {
                     const data = {{ scores }};
-                    drawDiagram("diagram-{{ loop.index }}", data);
+                    const percentages_data = {{ percentages_data }}; 
+                    const loopIndex = {{ loop.index }};
+                    drawDiagram("diagram-{{ loop.index }}", data, percentages_data, loopIndex);
                 });
             </script>
         {% endfor %}
